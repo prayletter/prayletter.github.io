@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"hide","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="垃圾回收过程1、标记GC扫描从ROOT节点开始扫描存活对象，扫描所有对象的引用，并构建对象图。  ROOT节点指静态方法、方法参数、局部变量、CPU寄存器">
+<meta name="keywords" content="JAVA">
+<meta property="og:type" content="article">
+<meta property="og:title" content="垃圾收集器">
+<meta property="og:url" content="http://yoursite.com/2019/01/27/垃圾收集器/index.html">
+<meta property="og:site_name" content="prayletter的博客">
+<meta property="og:description" content="垃圾回收过程1、标记GC扫描从ROOT节点开始扫描存活对象，扫描所有对象的引用，并构建对象图。  ROOT节点指静态方法、方法参数、局部变量、CPU寄存器">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-02-05T14:15:37.091Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="垃圾收集器">
+<meta name="twitter:description" content="垃圾回收过程1、标记GC扫描从ROOT节点开始扫描存活对象，扫描所有对象的引用，并构建对象图。  ROOT节点指静态方法、方法参数、局部变量、CPU寄存器">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/01/27/垃圾收集器/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>垃圾收集器 | prayletter的博客</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">prayletter的博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />标签</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />归档</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/27/垃圾收集器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="prayletter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="prayletter的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">垃圾收集器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-01-27 11:20:00" itemprop="dateCreated datePublished" datetime="2019-01-27T11:20:00+08:00">2019-01-27</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-05 22:15:37" itemprop="dateModified" datetime="2019-02-05T22:15:37+08:00">2019-02-05</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/01/27/垃圾收集器/" class="leancloud_visitors" data-flag-title="垃圾收集器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="垃圾回收过程"><a href="#垃圾回收过程" class="headerlink" title="垃圾回收过程"></a>垃圾回收过程</h1><h3 id="1、标记"><a href="#1、标记" class="headerlink" title="1、标记"></a>1、标记</h3><p>GC扫描从ROOT节点开始扫描存活对象，扫描所有对象的引用，并构建对象图。</p>
+<blockquote>
+<p>ROOT节点指静态方法、方法参数、局部变量、CPU寄存器</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><h4 id="Serial收集器"><a href="#Serial收集器" class="headerlink" title="Serial收集器"></a>Serial收集器</h4><p>单线程收集器</p>
+<p>特点：复制算法、单线程、新生代</p>
+<p>优点：简单高效，对于限定单CPU的情况下，Serial收集器没有线程切换的开销，可以获得最高的单线程收集效率。</p>
+<p>缺点：进行垃圾收集时必须暂停所有工作线程<code>Stop The World</code>。</p>
+<p>应用场景：HotSpot在Client模式下默认的新生代垃圾收集器，在用户的桌面应用环境下，可使用的内存不大（几十M到一两百M），可以在较短的时间完成垃圾收集，只要不频繁发生，这是可以接收的。</p>
+<h4 id="ParNew收集器"><a href="#ParNew收集器" class="headerlink" title="ParNew收集器"></a>ParNew收集器</h4><p>Serial收集器的多线程版本。</p>
+<p>特点：复制算法、多线程、新生代。</p>
+<p>缺点：进行垃圾收集是需要暂停所有工作线程<code>Stop The World</code>。</p>
+<p>应用场景：在Server模式下，ParNew是一种非常重要的收集器，因为除Serial收集器外，目前只有ParNew能与CMS收集器配合工作。在单CPU环境下，ParNew不会比Serial有更好的效果，因为存在线程切换的开销。ParNew收集器默认开启的收集线程与CPU的数量相同，在CPU非常多的情况下，可以使用<code>-XX:ParallerGCThreads</code>指定收集线程数。</p>
+<h4 id="Parallel-Scavenge收集器"><a href="#Parallel-Scavenge收集器" class="headerlink" title="Parallel Scavenge收集器"></a>Parallel Scavenge收集器</h4><p>Parallel Scavenge收集器因为与吞吐量关系密切，所以也称为吞吐量收集器。</p>
+<p>特点：复制算法、多线程、新生代</p>
+<p>缺点：Stop The World</p>
+<p>应用场景：以高吞吐量为目标，减少垃圾收集时间，让用户代码获得更长的运行时间。</p>
+<h4 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h4><p>Serial收集器的老年代版本。</p>
+<p>特点：标记-整理算法、单线程、老年代</p>
+<p>缺点：Stop The World。</p>
+<h4 id="Parallel-Old收集器"><a href="#Parallel-Old收集器" class="headerlink" title="Parallel Old收集器"></a>Parallel Old收集器</h4><p>Parallel Scavenge收集器的老年代版本。</p>
+<p>特点：标记-整理算法、多线程、老年代</p>
+<p>应用场景：在JDK1.6及之后，用来代替老年代的Serial Old算法，特别是在Server，多CPU环境下，这样注重吞吐量和CPU资源的场景下，就有了Parallel Old与Parallel Scavenge这样的组合。</p>
+<h4 id="G1收集器"><a href="#G1收集器" class="headerlink" title="G1收集器"></a>G1收集器</h4><p>常规的垃圾收集器都将堆分成三个部分：年轻代、老年代、永久代。G1将堆分成一组大小相等的区域，每个是连续范围内的虚拟内存，这些区域被分配和常规收集器一样的角色，但是它们没有固定的大小，具有极大的灵活性。</p>
+<h3 id="2、方式"><a href="#2、方式" class="headerlink" title="2、方式"></a>2、方式</h3><h4 id="新生代GC"><a href="#新生代GC" class="headerlink" title="新生代GC"></a>新生代GC</h4><p>新生代GC，Minor GC，指发生在新生代的垃圾收集动作。JAVA对象一般都具有朝生夕灭的特性，所以Minor GC非常频繁，一般回收速度也比较快。</p>
+<h4 id="老年代GC"><a href="#老年代GC" class="headerlink" title="老年代GC"></a>老年代GC</h4><p>老年代GC，Full GC，指发生在老年代的垃圾收集动作。出现一次Full GC至少伴随着一次Minor GC，但并非绝对。只有Minor GC仍然无法满足空间分配时才会触发Full GC。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/20/事务的特性与隔离级别/" rel="next" title="事务的特性与隔离级别">
+                <i class="fa fa-chevron-left"></i> 事务的特性与隔离级别
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/04/线程池的原理/" rel="prev" title="线程池">
+                线程池 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">prayletter</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收过程"><span class="nav-text">垃圾回收过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、标记"><span class="nav-text">1、标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾收集器"><span class="nav-text">垃圾收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Serial收集器"><span class="nav-text">Serial收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ParNew收集器"><span class="nav-text">ParNew收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parallel-Scavenge收集器"><span class="nav-text">Parallel Scavenge收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Serial-Old收集器"><span class="nav-text">Serial Old收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parallel-Old收集器"><span class="nav-text">Parallel Old收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#G1收集器"><span class="nav-text">G1收集器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、方式"><span class="nav-text">2、方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新生代GC"><span class="nav-text">新生代GC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#老年代GC"><span class="nav-text">老年代GC</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">prayletter</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动 v3.5.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script>
+    
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+        .done(function ({ results }) {
+          if (results.length > 0) {
+            var counter = results[0];
+            
+            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
+            
+            .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
+            })
+            
+            .fail(function ({ responseJSON }) {
+                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
+            })
+          } else {
+            
+              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
+                .done(function () {
+                  var $element = $(document.getElementById(url));
+                  $element.find('.leancloud-visitors-count').text(1);
+                })
+                .fail(function () {
+                  console.log('Failed to create');
+                });
+            
+          }
+        })
+      .fail(function ({ responseJSON }) {
+        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
+      });
+    }
+    
+
+    $(function() {
+      $.get('https://app-router.leancloud.cn/2/route?appId=' + "l4omteRSWFNIePk0PGYmnqE8-gzGzoHsz")
+        .done(function ({ api_server }) {
+          var Counter = function (method, url, data) {
+            return $.ajax({
+              method: method,
+              url: `https://${api_server}/1.1${url}`,
+              headers: {
+                'X-LC-Id': "l4omteRSWFNIePk0PGYmnqE8-gzGzoHsz",
+                'X-LC-Key': "j5DAeNmxRdSrLPigTaNiS4xt",
+                'Content-Type': 'application/json',
+              },
+              data: data,
+            });
+          };
+          
+          addCount(Counter);
+          
+        })
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

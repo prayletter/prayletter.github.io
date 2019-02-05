@@ -108,25 +108,20 @@
 
 
 
-  <meta name="description" content="查出系统中容器列表1docker ps -a 只返回容器的ID1docker ps -a -q">
-<meta name="keywords" content="Docker">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Docker">
-<meta property="og:url" content="http://yoursite.com/2018/12/17/2018-12-17/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="prayletter的博客">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="查出系统中容器列表1docker ps -a 只返回容器的ID1docker ps -a -q">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-13T12:47:37.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker">
-<meta name="twitter:description" content="查出系统中容器列表1docker ps -a 只返回容器的ID1docker ps -a -q">
+<meta name="twitter:title" content="prayletter的博客">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/17/2018-12-17/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
@@ -136,7 +131,7 @@
   };
 </script>
 
-  <title>Docker | prayletter的博客</title>
+  <title>prayletter的博客</title>
   
 
 
@@ -183,7 +178,8 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -272,9 +268,9 @@
           
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -289,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/2018-12-17/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/08/SpringBoot集成通用Mybatis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -306,7 +302,11 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Docker
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/08/SpringBoot集成通用Mybatis/" itemprop="url">
+                  Spring boot集成通用Mybatis
+                </a>
               
             
           </h1>
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2018-12-17 11:34:00" itemprop="dateCreated datePublished" datetime="2018-12-17T11:34:00+08:00">2018-12-17</time>
+              <time title="创建时间：2018-09-08 17:35:52" itemprop="dateCreated datePublished" datetime="2018-09-08T17:35:52+08:00">2018-09-08</time>
             
 
             
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-13 20:47:37" itemprop="dateModified" datetime="2019-01-13T20:47:37+08:00">2019-01-13</time>
+                <time title="修改时间：2019-01-26 21:08:16" itemprop="dateModified" datetime="2019-01-26T21:08:16+08:00">2019-01-26</time>
               
             
           </span>
@@ -361,7 +361,7 @@
 
           
           
-             <span id="/2018/12/17/2018-12-17/" class="leancloud_visitors" data-flag-title="Docker">
+             <span id="/2018/09/08/SpringBoot集成通用Mybatis/" class="leancloud_visitors" data-flag-title="Spring boot集成通用Mybatis">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -392,11 +392,16 @@
       
 
       
-        <h4 id="查出系统中容器列表"><a href="#查出系统中容器列表" class="headerlink" title="查出系统中容器列表"></a>查出系统中容器列表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-<h4 id="只返回容器的ID"><a href="#只返回容器的ID" class="headerlink" title="只返回容器的ID"></a>只返回容器的ID</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a -q</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>只列出容器的id可以在某些特殊的场合中用到，如删除所有的容器，可以这么写<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker rm `sudo docker ps -a -q`</span><br></pre></td></tr></table></figure></p>
-
+        
+          <h3 id="Spring-Boot集成MyBatis"><a href="#Spring-Boot集成MyBatis" class="headerlink" title="Spring Boot集成MyBatis"></a>Spring Boot集成MyBatis</h3><p><code>pom.xml</code> 中添加如下依赖。<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>tk.mybatis<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>mapper-spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.0.4<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/08/SpringBoot集成通用Mybatis/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -414,40 +419,14 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/Docker/" rel="tag"># Docker</a>
-          
-        </div>
+
+      
+
       
 
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/09/14/2018-09-09/" rel="next" title="JAVA锁">
-                <i class="fa fa-chevron-left"></i> JAVA锁
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/12/2019-1-12/" rel="prev" title="String VS StringBuilder VS StringBuffer">
-                String VS StringBuilder VS StringBuffer <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -457,15 +436,18 @@
   </article>
 
 
-  </div>
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
           
-
-  
-
-
 
         </div>
         
@@ -486,17 +468,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -511,7 +484,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -560,22 +533,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#查出系统中容器列表"><span class="nav-text">查出系统中容器列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#只返回容器的ID"><span class="nav-text">只返回容器的ID</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -706,10 +663,6 @@
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
-
-
 
   
 
@@ -744,42 +697,43 @@
   
   <script>
     
-    function addCount(Counter) {
+    function showTime(Counter) {
+      var entries = [];
       var $visitors = $(".leancloud_visitors");
-      var url = $visitors.attr('id').trim();
-      var title = $visitors.attr('data-flag-title').trim();
 
-      Counter('get', '/classes/Counter', { where: JSON.stringify({ url }) })
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      Counter('get', '/classes/Counter', { where: JSON.stringify({ url: { "$in": entries } }) })
         .done(function ({ results }) {
-          if (results.length > 0) {
-            var counter = results[0];
-            
-            Counter('put', `/classes/Counter/${counter.objectId}`, JSON.stringify({ time: { "__op":"Increment", "amount":1 } }))
-            
-            .done(function () {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(counter.time + 1);
-            })
-            
-            .fail(function ({ responseJSON }) {
-                console.log('Failed to save Visitor num, with error message: ' + responseJSON.error);
-            })
-          } else {
-            
-              Counter('post', '/classes/Counter', JSON.stringify({ title: title, url: url, time: 1}))
-                .done(function () {
-                  var $element = $(document.getElementById(url));
-                  $element.find('.leancloud-visitors-count').text(1);
-                })
-                .fail(function () {
-                  console.log('Failed to create');
-                });
-            
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
           }
         })
-      .fail(function ({ responseJSON }) {
-        console.log('LeanCloud Counter Error:' + responseJSON.code + " " + responseJSON.error);
-      });
+        .fail(function ({ responseJSON }) {
+          console.log("LeanCloud Counter Error: " + responseJSON.code + " " + responseJSON.error);
+        });
     }
     
 
@@ -799,7 +753,9 @@
             });
           };
           
-          addCount(Counter);
+          if ($('.post-title-link').length >= 1) {
+            showTime(Counter);
+          }
           
         })
     });
