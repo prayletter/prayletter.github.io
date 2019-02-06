@@ -108,25 +108,24 @@
 
 
 
-  <meta name="description" content="垃圾回收过程1、标记GC扫描从ROOT节点开始扫描存活对象，扫描所有对象的引用，并构建对象图。  ROOT节点指静态方法、方法参数、局部变量、CPU寄存器">
-<meta name="keywords" content="JAVA">
+  <meta name="description" content="NIO模型用户发起read操作后，可以立即去做其他操作。从内核角度来看，内核接受到asynchronous read之后会立刻返回，不会阻塞用户线程。由内核等待数据准备完成，然后将数据拷贝到用户线程中，并给用户发送一个信号，告知read操作已完成。整个read操作不会阻塞用户线程，用户只需要发送一个请求，当接受到内核返回的成功信号后，可以直接去使用数据了。 JAVA底层JAVA7中提供了Async">
 <meta property="og:type" content="article">
-<meta property="og:title" content="垃圾收集器">
-<meta property="og:url" content="http://yoursite.com/2019/01/27/垃圾收集器/index.html">
+<meta property="og:title" content="NIO">
+<meta property="og:url" content="http://yoursite.com/2019/02/06/NIO/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="垃圾回收过程1、标记GC扫描从ROOT节点开始扫描存活对象，扫描所有对象的引用，并构建对象图。  ROOT节点指静态方法、方法参数、局部变量、CPU寄存器">
+<meta property="og:description" content="NIO模型用户发起read操作后，可以立即去做其他操作。从内核角度来看，内核接受到asynchronous read之后会立刻返回，不会阻塞用户线程。由内核等待数据准备完成，然后将数据拷贝到用户线程中，并给用户发送一个信号，告知read操作已完成。整个read操作不会阻塞用户线程，用户只需要发送一个请求，当接受到内核返回的成功信号后，可以直接去使用数据了。 JAVA底层JAVA7中提供了Async">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-05T14:15:37.091Z">
+<meta property="og:updated_time" content="2019-02-06T11:51:31.506Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="垃圾收集器">
-<meta name="twitter:description" content="垃圾回收过程1、标记GC扫描从ROOT节点开始扫描存活对象，扫描所有对象的引用，并构建对象图。  ROOT节点指静态方法、方法参数、局部变量、CPU寄存器">
+<meta name="twitter:title" content="NIO">
+<meta name="twitter:description" content="NIO模型用户发起read操作后，可以立即去做其他操作。从内核角度来看，内核接受到asynchronous read之后会立刻返回，不会阻塞用户线程。由内核等待数据准备完成，然后将数据拷贝到用户线程中，并给用户发送一个信号，告知read操作已完成。整个read操作不会阻塞用户线程，用户只需要发送一个请求，当接受到内核返回的成功信号后，可以直接去使用数据了。 JAVA底层JAVA7中提供了Async">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/27/垃圾收集器/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/06/NIO/"/>
 
 
 
@@ -136,7 +135,7 @@
   };
 </script>
 
-  <title>垃圾收集器 | prayletter的博客</title>
+  <title>NIO | prayletter的博客</title>
   
 
 
@@ -289,7 +288,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/27/垃圾收集器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/NIO/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -306,7 +305,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">垃圾收集器
+          <h1 class="post-title" itemprop="name headline">NIO
               
             
           </h1>
@@ -331,24 +330,12 @@
                 
               
 
-              <time title="创建时间：2019-01-27 11:20:00" itemprop="dateCreated datePublished" datetime="2019-01-27T11:20:00+08:00">2019-01-27</time>
+              <time title="创建时间：2019-02-06 19:51:00 / 修改时间：19:51:31" itemprop="dateCreated datePublished" datetime="2019-02-06T19:51:00+08:00">2019-02-06</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-05 22:15:37" itemprop="dateModified" datetime="2019-02-05T22:15:37+08:00">2019-02-05</time>
               
             
           </span>
@@ -361,7 +348,7 @@
 
           
           
-             <span id="/2019/01/27/垃圾收集器/" class="leancloud_visitors" data-flag-title="垃圾收集器">
+             <span id="/2019/02/06/NIO/" class="leancloud_visitors" data-flag-title="NIO">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -392,33 +379,8 @@
       
 
       
-        <h1 id="垃圾回收过程"><a href="#垃圾回收过程" class="headerlink" title="垃圾回收过程"></a>垃圾回收过程</h1><h3 id="1、标记"><a href="#1、标记" class="headerlink" title="1、标记"></a>1、标记</h3><p>GC扫描从ROOT节点开始扫描存活对象，扫描所有对象的引用，并构建对象图。</p>
-<blockquote>
-<p>ROOT节点指静态方法、方法参数、局部变量、CPU寄存器</p>
-</blockquote>
-<a id="more"></a>
-<h3 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h3><h4 id="Serial收集器"><a href="#Serial收集器" class="headerlink" title="Serial收集器"></a>Serial收集器</h4><p>单线程收集器</p>
-<p>特点：复制算法、单线程、新生代</p>
-<p>优点：简单高效，对于限定单CPU的情况下，Serial收集器没有线程切换的开销，可以获得最高的单线程收集效率。</p>
-<p>缺点：进行垃圾收集时必须暂停所有工作线程<code>Stop The World</code>。</p>
-<p>应用场景：HotSpot在Client模式下默认的新生代垃圾收集器，在用户的桌面应用环境下，可使用的内存不大（几十M到一两百M），可以在较短的时间完成垃圾收集，只要不频繁发生，这是可以接收的。</p>
-<h4 id="ParNew收集器"><a href="#ParNew收集器" class="headerlink" title="ParNew收集器"></a>ParNew收集器</h4><p>Serial收集器的多线程版本。</p>
-<p>特点：复制算法、多线程、新生代。</p>
-<p>缺点：进行垃圾收集是需要暂停所有工作线程<code>Stop The World</code>。</p>
-<p>应用场景：在Server模式下，ParNew是一种非常重要的收集器，因为除Serial收集器外，目前只有ParNew能与CMS收集器配合工作。在单CPU环境下，ParNew不会比Serial有更好的效果，因为存在线程切换的开销。ParNew收集器默认开启的收集线程与CPU的数量相同，在CPU非常多的情况下，可以使用<code>-XX:ParallerGCThreads</code>指定收集线程数。</p>
-<h4 id="Parallel-Scavenge收集器"><a href="#Parallel-Scavenge收集器" class="headerlink" title="Parallel Scavenge收集器"></a>Parallel Scavenge收集器</h4><p>Parallel Scavenge收集器因为与吞吐量关系密切，所以也称为吞吐量收集器。</p>
-<p>特点：复制算法、多线程、新生代</p>
-<p>缺点：Stop The World</p>
-<p>应用场景：以高吞吐量为目标，减少垃圾收集时间，让用户代码获得更长的运行时间。</p>
-<h4 id="Serial-Old收集器"><a href="#Serial-Old收集器" class="headerlink" title="Serial Old收集器"></a>Serial Old收集器</h4><p>Serial收集器的老年代版本。</p>
-<p>特点：标记-整理算法、单线程、老年代</p>
-<p>缺点：Stop The World。</p>
-<h4 id="Parallel-Old收集器"><a href="#Parallel-Old收集器" class="headerlink" title="Parallel Old收集器"></a>Parallel Old收集器</h4><p>Parallel Scavenge收集器的老年代版本。</p>
-<p>特点：标记-整理算法、多线程、老年代</p>
-<p>应用场景：在JDK1.6及之后，用来代替老年代的Serial Old算法，特别是在Server，多CPU环境下，这样注重吞吐量和CPU资源的场景下，就有了Parallel Old与Parallel Scavenge这样的组合。</p>
-<h4 id="G1收集器"><a href="#G1收集器" class="headerlink" title="G1收集器"></a>G1收集器</h4><p>常规的垃圾收集器都将堆分成三个部分：年轻代、老年代、永久代。G1将堆分成一组大小相等的区域，每个是连续范围内的虚拟内存，这些区域被分配和常规收集器一样的角色，但是它们没有固定的大小，具有极大的灵活性。</p>
-<h3 id="2、方式"><a href="#2、方式" class="headerlink" title="2、方式"></a>2、方式</h3><h4 id="新生代GC"><a href="#新生代GC" class="headerlink" title="新生代GC"></a>新生代GC</h4><p>新生代GC，Minor GC，指发生在新生代的垃圾收集动作。JAVA对象一般都具有朝生夕灭的特性，所以Minor GC非常频繁，一般回收速度也比较快。</p>
-<h4 id="老年代GC"><a href="#老年代GC" class="headerlink" title="老年代GC"></a>老年代GC</h4><p>老年代GC，Full GC，指发生在老年代的垃圾收集动作。出现一次Full GC至少伴随着一次Minor GC，但并非绝对。只有Minor GC仍然无法满足空间分配时才会触发Full GC。</p>
+        <h1 id="NIO模型"><a href="#NIO模型" class="headerlink" title="NIO模型"></a>NIO模型</h1><p>用户发起read操作后，可以立即去做其他操作。从内核角度来看，内核接受到asynchronous read之后会立刻返回，不会阻塞用户线程。由内核等待数据准备完成，然后将数据拷贝到用户线程中，并给用户发送一个信号，告知read操作已完成。整个read操作不会阻塞用户线程，用户只需要发送一个请求，当接受到内核返回的成功信号后，可以直接去使用数据了。</p>
+<h3 id="JAVA底层"><a href="#JAVA底层" class="headerlink" title="JAVA底层"></a>JAVA底层</h3><p>JAVA7中提供了<code>Asynchronous IO</code></p>
 
       
     </div>
@@ -437,12 +399,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
-          
-        </div>
-      
 
       
       
@@ -452,8 +408,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/20/事务的特性与隔离级别/" rel="next" title="事务的特性与隔离级别">
-                <i class="fa fa-chevron-left"></i> 事务的特性与隔离级别
+              <a href="/2019/02/06/JAVA数据结构/" rel="next" title="JAVA数据结构">
+                <i class="fa fa-chevron-left"></i> JAVA数据结构
               </a>
             
           </div>
@@ -461,10 +417,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/04/线程池的原理/" rel="prev" title="线程池">
-                线程池 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -595,7 +547,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾回收过程"><span class="nav-text">垃圾回收过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、标记"><span class="nav-text">1、标记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#垃圾收集器"><span class="nav-text">垃圾收集器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Serial收集器"><span class="nav-text">Serial收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ParNew收集器"><span class="nav-text">ParNew收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parallel-Scavenge收集器"><span class="nav-text">Parallel Scavenge收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Serial-Old收集器"><span class="nav-text">Serial Old收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Parallel-Old收集器"><span class="nav-text">Parallel Old收集器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#G1收集器"><span class="nav-text">G1收集器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、方式"><span class="nav-text">2、方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新生代GC"><span class="nav-text">新生代GC</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#老年代GC"><span class="nav-text">老年代GC</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NIO模型"><span class="nav-text">NIO模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA底层"><span class="nav-text">JAVA底层</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="prayletter的博客">
 <meta property="og:description" content="同步实例方法同步实例方法同步的是拥有同步方法的对象。如果有多个对象存在，则每个对象在同一时间只能有一个线程执行同步实例方法。123public synchronized void add(int val) &amp;#123;    this.count += value;&amp;#125;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-26T13:07:42.820Z">
+<meta property="og:updated_time" content="2019-02-06T13:11:03.063Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Synchronized">
 <meta name="twitter:description" content="同步实例方法同步实例方法同步的是拥有同步方法的对象。如果有多个对象存在，则每个对象在同一时间只能有一个线程执行同步实例方法。123public synchronized void add(int val) &amp;#123;    this.count += value;&amp;#125;">
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-26 21:07:42" itemprop="dateModified" datetime="2019-01-26T21:07:42+08:00">2019-01-26</time>
+                <time title="修改时间：2019-02-06 21:11:03" itemprop="dateModified" datetime="2019-02-06T21:11:03+08:00">2019-02-06</time>
               
             
           </span>
@@ -403,7 +403,7 @@
 <p>由于在JVM中只能有一个类对象，因此对于一个类，同一时间只能有一个线程执行同步静态方法。</p>
 <h3 id="同步代码块"><a href="#同步代码块" class="headerlink" title="同步代码块"></a>同步代码块</h3><p>一个线程访问一个对象中的<code>synchronized(this)</code>代码块时，其他尝试访问该对象的线程阻塞。</p>
 <p>当一个线程访问一个对象的<code>synchornized(this)</code>代码块时，其他线程仍可以访问非<code>synchronized(this)</code>同步代码块。</p>
-<h3 id="synchronized修饰一个类"><a href="#synchronized修饰一个类" class="headerlink" title="synchronized修饰一个类"></a>synchronized修饰一个类</h3><p><code>synchronized</code>作用一个类，该类的所有对象用同一个锁。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="synchronized修饰一个类"><a href="#synchronized修饰一个类" class="headerlink" title="synchronized修饰一个类"></a>synchronized修饰一个类</h3><p><code>synchronized</code>作用一个类，该类的所有对象用同一个锁，与修饰静态方法类似。</p>
 
       
     </div>
@@ -447,8 +447,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/19/JAVA中equals()与==比较/" rel="prev" title="equals()与==比较">
-                equals()与==比较 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/19/字符串常量/" rel="prev" title="字符串常量池">
+                字符串常量池 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -519,7 +519,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -542,7 +542,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
