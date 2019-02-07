@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="事务的四大特性 原子性(Atomicity)  一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
+  <meta name="description" content="方法位置Sleep方法是Thread类的静态方法。123456789101112131415161718public static native void sleep(long millis) throws InterruptedException;public static void sleep(long millis, int nanos)    throws InterruptedExcep">
 <meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事务的特性与隔离级别">
-<meta property="og:url" content="http://yoursite.com/2019/01/20/事务的特性与隔离级别/index.html">
+<meta property="og:title" content="sleep与wait方法的区别">
+<meta property="og:url" content="http://yoursite.com/2019/02/06/Sleep与Wait的区别/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="事务的四大特性 原子性(Atomicity)  一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
+<meta property="og:description" content="方法位置Sleep方法是Thread类的静态方法。123456789101112131415161718public static native void sleep(long millis) throws InterruptedException;public static void sleep(long millis, int nanos)    throws InterruptedExcep">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-26T13:08:35.423Z">
+<meta property="og:updated_time" content="2019-02-07T08:47:31.896Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事务的特性与隔离级别">
-<meta name="twitter:description" content="事务的四大特性 原子性(Atomicity)  一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
+<meta name="twitter:title" content="sleep与wait方法的区别">
+<meta name="twitter:description" content="方法位置Sleep方法是Thread类的静态方法。123456789101112131415161718public static native void sleep(long millis) throws InterruptedException;public static void sleep(long millis, int nanos)    throws InterruptedExcep">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/20/事务的特性与隔离级别/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/06/Sleep与Wait的区别/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>事务的特性与隔离级别 | prayletter的博客</title>
+  <title>sleep与wait方法的区别 | prayletter的博客</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/20/事务的特性与隔离级别/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/06/Sleep与Wait的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">事务的特性与隔离级别
+          <h1 class="post-title" itemprop="name headline">sleep与wait方法的区别
               
             
           </h1>
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-01-20 17:43:00" itemprop="dateCreated datePublished" datetime="2019-01-20T17:43:00+08:00">2019-01-20</time>
+              <time title="创建时间：2019-02-06 21:53:00" itemprop="dateCreated datePublished" datetime="2019-02-06T21:53:00+08:00">2019-02-06</time>
             
 
             
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-26 21:08:35" itemprop="dateModified" datetime="2019-01-26T21:08:35+08:00">2019-01-26</time>
+                <time title="修改时间：2019-02-07 16:47:31" itemprop="dateModified" datetime="2019-02-07T16:47:31+08:00">2019-02-07</time>
               
             
           </span>
@@ -361,7 +361,7 @@
 
           
           
-             <span id="/2019/01/20/事务的特性与隔离级别/" class="leancloud_visitors" data-flag-title="事务的特性与隔离级别">
+             <span id="/2019/02/06/Sleep与Wait的区别/" class="leancloud_visitors" data-flag-title="sleep与wait方法的区别">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -392,13 +392,12 @@
       
 
       
-        <h2 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h2><ol>
-<li>原子性(Atomicity) </li>
-<li>一致性(Consistency)</li>
-<li>隔离性(Isolation)</li>
-<li>持久性(Durability)</li>
-</ol>
+        <h2 id="方法位置"><a href="#方法位置" class="headerlink" title="方法位置"></a>方法位置</h2><p><code>Sleep</code>方法是<code>Thread</code>类的静态方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis, <span class="keyword">int</span> nanos)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (millis &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"timeout value is negative"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (nanos &lt; <span class="number">0</span> || nanos &gt; <span class="number">999999</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                                <span class="string">"nanosecond timeout value out of range"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nanos &gt;= <span class="number">500000</span> || (nanos != <span class="number">0</span> &amp;&amp; millis == <span class="number">0</span>)) &#123;</span><br><span class="line">            millis++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        sleep(millis);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
+<p><code>wait</code>方法来自<code>Object</code>类，使用了<code>final</code>字段修饰，不能被重写。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    wait(<span class="number">0L</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">(<span class="keyword">long</span> timeoutMillis)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title">wait</span><span class="params">(<span class="keyword">long</span> timeoutMillis, <span class="keyword">int</span> nanos)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (timeoutMillis &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"timeoutMillis value is negative"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (nanos &lt; <span class="number">0</span> || nanos &gt; <span class="number">999999</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                            <span class="string">"nanosecond timeout value out of range"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (nanos &gt; <span class="number">0</span>) &#123;</span><br><span class="line">        timeoutMillis++;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    wait(timeoutMillis);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="锁状态"><a href="#锁状态" class="headerlink" title="锁状态"></a>锁状态</h2><p><code>Sleep</code>不会释放当前对象持有的锁资源。<code>Sleep(milliseconds)</code>可以指定时间使它自动唤醒，如果时间未到只能使用<code>interrupt</code>强制打断。<code>Sleep(0)</code>意思是触发一次CPU竞争。</p>
+<p><code>wait</code>释放锁，出让系统资源，使其他线程也能使用同步代码块与方法。调用<code>wait</code>方法后，需要等待其他线程调用<code>notify</code>或<code>notifyAll</code>方法唤醒等待池中的所有线程，才会进入就绪队列，等待CPU分配资源</p>
+<h2 id="调用位置"><a href="#调用位置" class="headerlink" title="调用位置"></a>调用位置</h2><p><code>sleep</code>方法可以在任何位置调用。<br><code>wait</code>方法因为操作的是对象锁，所以只能在同步方法或同步代码块中调用。如果在非同步方法和同步代码块中调用，虽然编译不会报错，但是运行的时候会报<code>IllegalMonitorStateException</code>。</p>
 
       
     </div>
@@ -432,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/20/JAVA内存模型/" rel="next" title="JAVA内存模型">
-                <i class="fa fa-chevron-left"></i> JAVA内存模型
+              <a href="/2019/02/06/NIO/" rel="next" title="NIO">
+                <i class="fa fa-chevron-left"></i> NIO
               </a>
             
           </div>
@@ -442,8 +441,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/27/垃圾收集器/" rel="prev" title="垃圾收集器">
-                垃圾收集器 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/07/Hash/" rel="prev" title="Hash">
+                Hash <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -577,7 +576,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的四大特性"><span class="nav-text">事务的四大特性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法位置"><span class="nav-text">方法位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#锁状态"><span class="nav-text">锁状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用位置"><span class="nav-text">调用位置</span></a></li></ol></div>
             
 
           </div>
