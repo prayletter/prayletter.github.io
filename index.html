@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-02-07 16:46:00 / 修改时间：16:47:55" itemprop="dateCreated datePublished" datetime="2019-02-07T16:46:00+08:00">2019-02-07</time>
+              <time title="创建时间：2019-02-07 16:46:00 / 修改时间：17:23:53" itemprop="dateCreated datePublished" datetime="2019-02-07T16:46:00+08:00">2019-02-07</time>
             
 
             
@@ -381,8 +381,12 @@
 
       
         
-          <h2 id="事务的四大要素（属性）"><a href="#事务的四大要素（属性）" class="headerlink" title="事务的四大要素（属性）"></a>事务的四大要素（属性）</h2><h3 id="Atomicity原子性"><a href="#Atomicity原子性" class="headerlink" title="Atomicity原子性"></a>Atomicity原子性</h3><p>事务要么被全部执行，要么都不被执行。</p>
-<h3 id="Consistent一致性"><a href="#Consistent一致性" class="headerlink" title="Consistent一致性"></a>Consistent一致性</h3><p>事务的执行使数据库从一个正确的状态转换为另一个正确的状态。</p>
+          <h2 id="事务的四大要素（属性）"><a href="#事务的四大要素（属性）" class="headerlink" title="事务的四大要素（属性）"></a>事务的四大要素（属性）</h2><ul>
+<li><strong>A</strong>tomicity原子性：事务要么被全部执行，要么都不被执行。</li>
+<li><strong>C</strong>onsistent一致性：事务的执行使数据库从一个正确的状态转换为另一个正确的状态。</li>
+<li><strong>I</strong>solation隔离性：并发事务之间是互不干扰的，即事务处理过程中的中间状态对其他事务是透明的。</li>
+<li><strong>D</strong>urable持久性：事务正确提交后，数据将永久保存进数据库。</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/07/事务与隔离级别/#more" rel="contents">
@@ -487,7 +491,7 @@
                 
               
 
-              <time title="创建时间：2019-02-07 16:15:00 / 修改时间：16:47:51" itemprop="dateCreated datePublished" datetime="2019-02-07T16:15:00+08:00">2019-02-07</time>
+              <time title="创建时间：2019-02-07 16:15:00 / 修改时间：16:49:19" itemprop="dateCreated datePublished" datetime="2019-02-07T16:15:00+08:00">2019-02-07</time>
             
 
             
@@ -659,7 +663,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-07 16:47:31" itemprop="dateModified" datetime="2019-02-07T16:47:31+08:00">2019-02-07</time>
+                <time title="修改时间：2019-02-07 17:14:55" itemprop="dateModified" datetime="2019-02-07T17:14:55+08:00">2019-02-07</time>
               
             
           </span>
@@ -704,7 +708,7 @@
 
       
         
-          <h2 id="方法位置"><a href="#方法位置" class="headerlink" title="方法位置"></a>方法位置</h2><p><code>Sleep</code>方法是<code>Thread</code>类的静态方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis, <span class="keyword">int</span> nanos)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (millis &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"timeout value is negative"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (nanos &lt; <span class="number">0</span> || nanos &gt; <span class="number">999999</span>) &#123;</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(</span><br><span class="line">                                <span class="string">"nanosecond timeout value out of range"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (nanos &gt;= <span class="number">500000</span> || (nanos != <span class="number">0</span> &amp;&amp; millis == <span class="number">0</span>)) &#123;</span><br><span class="line">            millis++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        sleep(millis);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+          <h2 id="方法位置"><a href="#方法位置" class="headerlink" title="方法位置"></a>方法位置</h2><p><code>Sleep</code>方法是<code>Thread</code>类的静态方法。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">native</span> <span class="keyword">void</span> <span class="title">sleep</span><span class="params">(<span class="keyword">long</span> millis)</span> <span class="keyword">throws</span> InterruptedException</span>;</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2019/02/06/Sleep与Wait的区别/#more" rel="contents">

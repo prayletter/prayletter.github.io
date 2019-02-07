@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="事务的四大要素（属性）Atomicity原子性事务要么被全部执行，要么都不被执行。 Consistent一致性事务的执行使数据库从一个正确的状态转换为另一个正确的状态。">
+  <meta name="description" content="事务的四大要素（属性） Atomicity原子性：事务要么被全部执行，要么都不被执行。 Consistent一致性：事务的执行使数据库从一个正确的状态转换为另一个正确的状态。 Isolation隔离性：并发事务之间是互不干扰的，即事务处理过程中的中间状态对其他事务是透明的。 Durable持久性：事务正确提交后，数据将永久保存进数据库。">
 <meta name="keywords" content="数据库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事务与隔离级别">
 <meta property="og:url" content="http://yoursite.com/2019/02/07/事务与隔离级别/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="事务的四大要素（属性）Atomicity原子性事务要么被全部执行，要么都不被执行。 Consistent一致性事务的执行使数据库从一个正确的状态转换为另一个正确的状态。">
+<meta property="og:description" content="事务的四大要素（属性） Atomicity原子性：事务要么被全部执行，要么都不被执行。 Consistent一致性：事务的执行使数据库从一个正确的状态转换为另一个正确的状态。 Isolation隔离性：并发事务之间是互不干扰的，即事务处理过程中的中间状态对其他事务是透明的。 Durable持久性：事务正确提交后，数据将永久保存进数据库。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-07T08:47:55.073Z">
+<meta property="og:updated_time" content="2019-02-07T09:23:53.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务与隔离级别">
-<meta name="twitter:description" content="事务的四大要素（属性）Atomicity原子性事务要么被全部执行，要么都不被执行。 Consistent一致性事务的执行使数据库从一个正确的状态转换为另一个正确的状态。">
+<meta name="twitter:description" content="事务的四大要素（属性） Atomicity原子性：事务要么被全部执行，要么都不被执行。 Consistent一致性：事务的执行使数据库从一个正确的状态转换为另一个正确的状态。 Isolation隔离性：并发事务之间是互不干扰的，即事务处理过程中的中间状态对其他事务是透明的。 Durable持久性：事务正确提交后，数据将永久保存进数据库。">
 
 
 
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-02-07 16:46:00 / 修改时间：16:47:55" itemprop="dateCreated datePublished" datetime="2019-02-07T16:46:00+08:00">2019-02-07</time>
+              <time title="创建时间：2019-02-07 16:46:00 / 修改时间：17:23:53" itemprop="dateCreated datePublished" datetime="2019-02-07T16:46:00+08:00">2019-02-07</time>
             
 
             
@@ -380,18 +380,24 @@
       
 
       
-        <h2 id="事务的四大要素（属性）"><a href="#事务的四大要素（属性）" class="headerlink" title="事务的四大要素（属性）"></a>事务的四大要素（属性）</h2><h3 id="Atomicity原子性"><a href="#Atomicity原子性" class="headerlink" title="Atomicity原子性"></a>Atomicity原子性</h3><p>事务要么被全部执行，要么都不被执行。</p>
-<h3 id="Consistent一致性"><a href="#Consistent一致性" class="headerlink" title="Consistent一致性"></a>Consistent一致性</h3><p>事务的执行使数据库从一个正确的状态转换为另一个正确的状态。</p>
+        <h2 id="事务的四大要素（属性）"><a href="#事务的四大要素（属性）" class="headerlink" title="事务的四大要素（属性）"></a>事务的四大要素（属性）</h2><ul>
+<li><strong>A</strong>tomicity原子性：事务要么被全部执行，要么都不被执行。</li>
+<li><strong>C</strong>onsistent一致性：事务的执行使数据库从一个正确的状态转换为另一个正确的状态。</li>
+<li><strong>I</strong>solation隔离性：并发事务之间是互不干扰的，即事务处理过程中的中间状态对其他事务是透明的。</li>
+<li><strong>D</strong>urable持久性：事务正确提交后，数据将永久保存进数据库。</li>
+</ul>
 <a id="more"></a>
-<h3 id="Isolation隔离性"><a href="#Isolation隔离性" class="headerlink" title="Isolation隔离性"></a>Isolation隔离性</h3><p>并发事务之间是互不干扰的，即事务处理过程中的中间状态对其他事务是透明的。</p>
-<h3 id="Durable持久性"><a href="#Durable持久性" class="headerlink" title="Durable持久性"></a>Durable持久性</h3><p>事务正确提交后，数据将永久保存进数据库。</p>
-<h2 id="并发下事务会产生的问题"><a href="#并发下事务会产生的问题" class="headerlink" title="并发下事务会产生的问题"></a>并发下事务会产生的问题</h2><h3 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h3><p>一个事务读取到另一事务还未提交的数据。</p>
-<h3 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h3><p>一个事务两次读取到的数据不同，侧重于<code>update</code>。</p>
-<h3 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h3><p>一个事务两次读取到的数据量不同，侧重于<code>insert</code>与<code>delete</code>。</p>
-<h2 id="MySQL四种隔离级别"><a href="#MySQL四种隔离级别" class="headerlink" title="MySQL四种隔离级别"></a>MySQL四种隔离级别</h2><h3 id="read-uncommitted"><a href="#read-uncommitted" class="headerlink" title="read uncommitted"></a>read uncommitted</h3><p>读未提交，会产生脏读、不可重复读、幻读。</p>
-<h3 id="read-committed"><a href="#read-committed" class="headerlink" title="read committed"></a>read committed</h3><p>读已提交，会产生不可重复读、幻读。<br>读已提交是Oracle与SQL Server默认的隔离级别。</p>
-<h3 id="repeatable-read"><a href="#repeatable-read" class="headerlink" title="repeatable read"></a>repeatable read</h3><p>可重复读，会产生幻读。<br>可重复读是MySQL默认的隔离级别。</p>
-<h3 id="serializable"><a href="#serializable" class="headerlink" title="serializable"></a>serializable</h3><p>串行化，<strong>不会</strong>产生脏读、不可重复读、幻读。</p>
+<h2 id="并发下事务会产生的问题"><a href="#并发下事务会产生的问题" class="headerlink" title="并发下事务会产生的问题"></a>并发下事务会产生的问题</h2><ul>
+<li>脏读：一个事务读取到另一事务还未提交的数据。</li>
+<li>不可重复读：一个事务两次读取到的数据不同，侧重于<code>update</code>。</li>
+<li>幻读：一个事务两次读取到的数据量不同，侧重于<code>insert</code>与<code>delete</code>。</li>
+</ul>
+<h2 id="MySQL四种隔离级别"><a href="#MySQL四种隔离级别" class="headerlink" title="MySQL四种隔离级别"></a>MySQL四种隔离级别</h2><ul>
+<li>read uncommitted读未提交，会产生脏读、不可重复读、幻读。</li>
+<li>read committed读已提交，会产生不可重复读、幻读。读已提交是Oracle与SQL Server默认的隔离级别。</li>
+<li>repeatable read可重复读，会产生幻读。可重复读是MySQL默认的隔离级别。</li>
+<li>serializable串行化，<strong>不会</strong>产生脏读、不可重复读、幻读。</li>
+</ul>
 <h2 id="一些查询操作"><a href="#一些查询操作" class="headerlink" title="一些查询操作"></a>一些查询操作</h2><p>查询隔离级别<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> @@tx_isolation</span><br></pre></td></tr></table></figure></p>
 <p>设置隔离级别<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">set</span> <span class="keyword">global</span> <span class="keyword">transaction</span> <span class="keyword">isolation</span> <span class="keyword">level</span> 级别字符串;</span><br></pre></td></tr></table></figure></p>
 
@@ -568,7 +574,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的四大要素（属性）"><span class="nav-text">事务的四大要素（属性）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Atomicity原子性"><span class="nav-text">Atomicity原子性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Consistent一致性"><span class="nav-text">Consistent一致性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Isolation隔离性"><span class="nav-text">Isolation隔离性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Durable持久性"><span class="nav-text">Durable持久性</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发下事务会产生的问题"><span class="nav-text">并发下事务会产生的问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#脏读"><span class="nav-text">脏读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不可重复读"><span class="nav-text">不可重复读</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#幻读"><span class="nav-text">幻读</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL四种隔离级别"><span class="nav-text">MySQL四种隔离级别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#read-uncommitted"><span class="nav-text">read uncommitted</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#read-committed"><span class="nav-text">read committed</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#repeatable-read"><span class="nav-text">repeatable read</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#serializable"><span class="nav-text">serializable</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些查询操作"><span class="nav-text">一些查询操作</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的四大要素（属性）"><span class="nav-text">事务的四大要素（属性）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发下事务会产生的问题"><span class="nav-text">并发下事务会产生的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL四种隔离级别"><span class="nav-text">MySQL四种隔离级别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些查询操作"><span class="nav-text">一些查询操作</span></a></li></ol></div>
             
 
           </div>
