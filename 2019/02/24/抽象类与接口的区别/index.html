@@ -108,22 +108,25 @@
 
 
 
-  <meta name="keywords" content="JAVA">
+  <meta name="description" content="对比 默认实现。抽象类可以有默认实现；接口不可以有默认实现。 main方法。抽象类可以有main方法；接口没有main方法。 继承。抽象类可以继承一个类，或实现多个接口；接口只可以继承一个或多个接口。">
+<meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA内存模型">
-<meta property="og:url" content="http://yoursite.com/2019/01/20/JAVA内存模型/index.html">
+<meta property="og:title" content="抽象类与接口">
+<meta property="og:url" content="http://yoursite.com/2019/02/24/抽象类与接口的区别/index.html">
 <meta property="og:site_name" content="prayletter的博客">
+<meta property="og:description" content="对比 默认实现。抽象类可以有默认实现；接口不可以有默认实现。 main方法。抽象类可以有main方法；接口没有main方法。 继承。抽象类可以继承一个类，或实现多个接口；接口只可以继承一个或多个接口。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-20T10:37:10.168Z">
+<meta property="og:updated_time" content="2019-02-25T13:54:52.518Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA内存模型">
+<meta name="twitter:title" content="抽象类与接口">
+<meta name="twitter:description" content="对比 默认实现。抽象类可以有默认实现；接口不可以有默认实现。 main方法。抽象类可以有main方法；接口没有main方法。 继承。抽象类可以继承一个类，或实现多个接口；接口只可以继承一个或多个接口。">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/20/JAVA内存模型/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/24/抽象类与接口的区别/"/>
 
 
 
@@ -133,7 +136,7 @@
   };
 </script>
 
-  <title>JAVA内存模型 | prayletter的博客</title>
+  <title>抽象类与接口 | prayletter的博客</title>
   
 
 
@@ -286,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/20/JAVA内存模型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/24/抽象类与接口的区别/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -303,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JAVA内存模型
+          <h1 class="post-title" itemprop="name headline">抽象类与接口
               
             
           </h1>
@@ -328,12 +331,24 @@
                 
               
 
-              <time title="创建时间：2019-01-20 10:21:00 / 修改时间：18:37:10" itemprop="dateCreated datePublished" datetime="2019-01-20T10:21:00+08:00">2019-01-20</time>
+              <time title="创建时间：2019-02-24 19:48:00" itemprop="dateCreated datePublished" datetime="2019-02-24T19:48:00+08:00">2019-02-24</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-25 21:54:52" itemprop="dateModified" datetime="2019-02-25T21:54:52+08:00">2019-02-25</time>
               
             
           </span>
@@ -346,7 +361,7 @@
 
           
           
-             <span id="/2019/01/20/JAVA内存模型/" class="leancloud_visitors" data-flag-title="JAVA内存模型">
+             <span id="/2019/02/24/抽象类与接口的区别/" class="leancloud_visitors" data-flag-title="抽象类与接口">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -377,7 +392,29 @@
       
 
       
-        
+        <h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><ul>
+<li><strong>默认实现</strong>。抽象类可以有默认实现；接口不可以有默认实现。</li>
+<li><strong>main方法</strong>。抽象类可以有main方法；接口没有main方法。</li>
+<li><strong>继承</strong>。抽象类可以继承一个类，或实现多个接口；接口只可以继承一个或多个接口。</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><strong>添加方法</strong>。抽象类添加一个方法，可以提供默认实现，不需要改动抽象类的子类；接口添加一个方法，需要修改所有该接口的实现类。</li>
+<li><strong>访问修饰符</strong>。抽象类可以有<code>public</code>、<code>protect</code>、<code>default</code>修饰符；接口默认的修饰符是<code>public</code>，不可以使用其他修饰符。</li>
+<li><strong>成员变量</strong>。抽象类中的成员变量可以是各种类型的；接口中的变量只能是<code>public static final</code>。</li>
+</ul>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ul>
+<li>拥有一些方法，它们具有一些默认实现，使用抽象类。</li>
+<li>希望实现多继承，使用接口。因为JAVA不支持多继承，子类不能继承多个类，但可以实现多个接口。</li>
+<li>基本工作在不断变化，使用抽象类。抽象类添加方法，可以有默认实现，如果使用接口，需要改动所有实现了该接口的类。</li>
+</ul>
+<h3 id="抽象类与普通类区别"><a href="#抽象类与普通类区别" class="headerlink" title="抽象类与普通类区别"></a>抽象类与普通类区别</h3><ul>
+<li>抽象方法的访问修饰符不能是<code>private</code>，只能是<code>public</code>或<code>protect</code>，如果是<code>private</code>，那么子类就不能实现该方法了，默认访问修饰符是<code>public</code>。</li>
+<li>抽象类不能创建对象。</li>
+<li>如果一个类继承于一个抽象类，那么它就要实现父类的抽象方法，如果子类没有实现父类的所有抽象方法，则子类也必须是抽象类。</li>
+</ul>
+<h3 id="抽象类是否可以没有方法和属性？"><a href="#抽象类是否可以没有方法和属性？" class="headerlink" title="抽象类是否可以没有方法和属性？"></a>抽象类是否可以没有方法和属性？</h3><p>答案是可以的。<br>有抽象方法的类一定的是抽象类，抽象类不一定有抽象方法。没有抽象方法的抽象类的意义在于：实现出来的对象不能满足要求，只有继承并实现了它的子类才能满足要求，所以才把它定义为没有抽象方法的抽象类。</p>
+
       
     </div>
 
@@ -410,8 +447,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/19/JAVA中equals()与==比较/" rel="next" title="equals()与==比较">
-                <i class="fa fa-chevron-left"></i> equals()与==比较
+              <a href="/2019/02/24/解析与分派/" rel="next" title="解析与分派">
+                <i class="fa fa-chevron-left"></i> 解析与分派
               </a>
             
           </div>
@@ -420,8 +457,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/01/20/事务的特性与隔离级别/" rel="prev" title="事务的特性与隔离级别">
-                事务的特性与隔离级别 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/25/静态属性静态方法是否可以被继承、重写？/" rel="prev" title="静态属性、静态方法是否可以被继承、重写？">
+                静态属性、静态方法是否可以被继承、重写？ <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -467,8 +504,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -548,6 +594,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#对比"><span class="nav-text">对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-text">应用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类与普通类区别"><span class="nav-text">抽象类与普通类区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#抽象类是否可以没有方法和属性？"><span class="nav-text">抽象类是否可以没有方法和属性？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="prayletter的博客">
 <meta property="og:description" content="解析JAVA方法中调用的方法其实是一个符号引用，在类加载阶段，会将一部分符号引用转换为直接引用。方法在程序真正运行前就有明确的调用版本，在运行期不会发现变化，即“编译期确定，运行期不变”，这类目标方法的调用称为解析。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-24T11:33:55.734Z">
+<meta property="og:updated_time" content="2019-02-24T11:39:58.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="解析与分派">
 <meta name="twitter:description" content="解析JAVA方法中调用的方法其实是一个符号引用，在类加载阶段，会将一部分符号引用转换为直接引用。方法在程序真正运行前就有明确的调用版本，在运行期不会发现变化，即“编译期确定，运行期不变”，这类目标方法的调用称为解析。">
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-02-24 18:00:00 / 修改时间：19:33:55" itemprop="dateCreated datePublished" datetime="2019-02-24T18:00:00+08:00">2019-02-24</time>
+              <time title="创建时间：2019-02-24 18:00:00 / 修改时间：19:39:58" itemprop="dateCreated datePublished" datetime="2019-02-24T18:00:00+08:00">2019-02-24</time>
             
 
             
@@ -391,7 +391,7 @@
 <p>原因：<code>Human man = new Man()</code>，其中<code>Human</code>是静态类型，<code>new Man()</code>是实际类型。Java重载是通过变量的静态类型而不是实际类型作为判定依据的。因为<code>Human man = new Man()</code>与<code>Human woman = new Woman()</code>的静态类型都是<code>Human</code>，所以选择<code>sayHello(Human human)</code>作为调用目标。</p>
 <h3 id="动态分派"><a href="#动态分派" class="headerlink" title="动态分派"></a>动态分派</h3><p>Java虚拟机是通过<code>虚方法表</code>来实现动态分派的。若子类重写了父类的方法，子类虚方法表地址是子类实现版本的地址。若子类没有重写父类方法，子类虚方法表里的地址入口与父类是一致的。</p>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><blockquote>
-<p><a href="https://blog.csdn.net/u011080472/article/details/51334288" target="_blank" rel="noopener">深入理解JVM】：解析与分派</a></p>
+<p><a href="https://blog.csdn.net/u011080472/article/details/51334288" target="_blank" rel="noopener">深入理解JVM：解析与分派</a></p>
 </blockquote>
 
       
@@ -435,6 +435,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/24/抽象类与接口的区别/" rel="prev" title="抽象类与接口">
+                抽象类与接口 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -504,7 +508,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

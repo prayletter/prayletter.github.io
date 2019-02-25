@@ -108,22 +108,25 @@
 
 
 
-  <meta name="keywords" content="JAVA">
+  <meta name="description" content="JAVA异常都是对象，是Throwable类的子类。Throwable有两个子类，Error与Exception。  ERRORError错误，是应用程序运行时很严重的问题，一般为JVM出现的问题，例如outOfMemory。出现Error时JVM一般都会中止运行。 EXCEPTION程序本身可以处理的异常。 运行时异常RuntimeException类及其子类。例如NullPointerExc">
+<meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA内存模型">
-<meta property="og:url" content="http://yoursite.com/2019/01/20/JAVA内存模型/index.html">
+<meta property="og:title" content="JAVA异常体系">
+<meta property="og:url" content="http://yoursite.com/2019/02/26/JAVA异常体系/index.html">
 <meta property="og:site_name" content="prayletter的博客">
+<meta property="og:description" content="JAVA异常都是对象，是Throwable类的子类。Throwable有两个子类，Error与Exception。  ERRORError错误，是应用程序运行时很严重的问题，一般为JVM出现的问题，例如outOfMemory。出现Error时JVM一般都会中止运行。 EXCEPTION程序本身可以处理的异常。 运行时异常RuntimeException类及其子类。例如NullPointerExc">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-20T10:37:10.168Z">
+<meta property="og:updated_time" content="2019-02-25T17:01:27.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JAVA内存模型">
+<meta name="twitter:title" content="JAVA异常体系">
+<meta name="twitter:description" content="JAVA异常都是对象，是Throwable类的子类。Throwable有两个子类，Error与Exception。  ERRORError错误，是应用程序运行时很严重的问题，一般为JVM出现的问题，例如outOfMemory。出现Error时JVM一般都会中止运行。 EXCEPTION程序本身可以处理的异常。 运行时异常RuntimeException类及其子类。例如NullPointerExc">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/20/JAVA内存模型/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/26/JAVA异常体系/"/>
 
 
 
@@ -133,7 +136,7 @@
   };
 </script>
 
-  <title>JAVA内存模型 | prayletter的博客</title>
+  <title>JAVA异常体系 | prayletter的博客</title>
   
 
 
@@ -286,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/20/JAVA内存模型/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/26/JAVA异常体系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -303,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JAVA内存模型
+          <h1 class="post-title" itemprop="name headline">JAVA异常体系
               
             
           </h1>
@@ -328,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-01-20 10:21:00 / 修改时间：18:37:10" itemprop="dateCreated datePublished" datetime="2019-01-20T10:21:00+08:00">2019-01-20</time>
+              <time title="创建时间：2019-02-26 00:44:00 / 修改时间：01:01:27" itemprop="dateCreated datePublished" datetime="2019-02-26T00:44:00+08:00">2019-02-26</time>
             
 
             
@@ -346,7 +349,7 @@
 
           
           
-             <span id="/2019/01/20/JAVA内存模型/" class="leancloud_visitors" data-flag-title="JAVA内存模型">
+             <span id="/2019/02/26/JAVA异常体系/" class="leancloud_visitors" data-flag-title="JAVA异常体系">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -377,7 +380,22 @@
       
 
       
-        
+        <blockquote>
+<p>JAVA异常都是对象，是<code>Throwable</code>类的子类。<code>Throwable</code>有两个子类，<code>Error</code>与<code>Exception</code>。</p>
+</blockquote>
+<h3 id="ERROR"><a href="#ERROR" class="headerlink" title="ERROR"></a>ERROR</h3><p><code>Error</code>错误，是应用程序运行时很严重的问题，一般为JVM出现的问题，例如outOfMemory。出现<code>Error</code>时JVM一般都会中止运行。</p>
+<h3 id="EXCEPTION"><a href="#EXCEPTION" class="headerlink" title="EXCEPTION"></a>EXCEPTION</h3><p>程序本身可以处理的异常。</p>
+<p><strong>运行时异常</strong><br><code>RuntimeException</code>类及其子类。例如<code>NullPointerException</code>、<code>IndexOutOfBoundsException</code>等，这些异常都是不检查异常，即Java编译器不会检查这些异常，也就是说，当程序中出现这类异常，且没有使用<code>try-catch</code>进行捕获，也没有使用<code>throws</code>字句抛出，也会编译通过。</p>
+<p><strong>非运行时异常</strong><br><code>RuntimeException</code>以外的异常，原则上程序必须处理这些异常，如果不处理，程序不能通过编译。</p>
+<h3 id="处理"><a href="#处理" class="headerlink" title="处理"></a>处理</h3><p><code>try-catch-finally</code>语句</p>
+<p>一般情况下，finally语句都会被执行，除了以下几种情况</p>
+<ul>
+<li><code>finally</code>语句块中发生了异常</li>
+<li>在前面的代码中使用<code>System.exit()</code>退出了程序</li>
+<li>程序所在线程死亡</li>
+<li>CPU被关闭</li>
+</ul>
+
       
     </div>
 
@@ -410,8 +428,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/19/JAVA中equals()与==比较/" rel="next" title="equals()与==比较">
-                <i class="fa fa-chevron-left"></i> equals()与==比较
+              <a href="/2019/02/25/静态属性静态方法是否可以被继承、重写？/" rel="next" title="静态属性、静态方法是否可以被继承、重写？">
+                <i class="fa fa-chevron-left"></i> 静态属性、静态方法是否可以被继承、重写？
               </a>
             
           </div>
@@ -419,10 +437,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/20/事务的特性与隔离级别/" rel="prev" title="事务的特性与隔离级别">
-                事务的特性与隔离级别 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -467,8 +481,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -548,6 +571,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#ERROR"><span class="nav-text">ERROR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EXCEPTION"><span class="nav-text">EXCEPTION</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#处理"><span class="nav-text">处理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

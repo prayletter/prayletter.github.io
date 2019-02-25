@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="prayletter的博客">
 <meta property="og:description" content="定义把实现了接口的类的实例引用赋值给一个变量，该变量就可以调用回调类重写的接口方法了。  不同的类实现同一个接口时有不同的实现方法，因此接口变量在回调接口方法时就可能具有多种形态。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-23T13:44:52.891Z">
+<meta property="og:updated_time" content="2019-02-24T11:40:34.811Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="接口回调">
 <meta name="twitter:description" content="定义把实现了接口的类的实例引用赋值给一个变量，该变量就可以调用回调类重写的接口方法了。  不同的类实现同一个接口时有不同的实现方法，因此接口变量在回调接口方法时就可能具有多种形态。">
@@ -331,12 +331,24 @@
                 
               
 
-              <time title="创建时间：2019-02-23 21:01:00 / 修改时间：21:44:52" itemprop="dateCreated datePublished" datetime="2019-02-23T21:01:00+08:00">2019-02-23</time>
+              <time title="创建时间：2019-02-23 21:01:00" itemprop="dateCreated datePublished" datetime="2019-02-23T21:01:00+08:00">2019-02-23</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-24 19:40:34" itemprop="dateModified" datetime="2019-02-24T19:40:34+08:00">2019-02-24</time>
               
             
           </span>
@@ -387,6 +399,7 @@
 <a id="more"></a>
 <h3 id="DEMO"><a href="#DEMO" class="headerlink" title="DEMO"></a>DEMO</h3><p>定义一个接口<code>CallBackInterface</code></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CallBackInterface</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>定义一个接口实现类<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Boss</span> <span class="keyword">implements</span> <span class="title">CallBackInterface</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">execute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"boss.....execute"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>定义一个方法，方法的参数是接口</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Employee</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> CallBackInterface callBackInterface;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * <span class="doctag">@param</span> callBackInterface 接口</span></span><br><span class="line"><span class="comment">    **/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setCallBackInterface</span><span class="params">(CallBackInterface callBackInterface)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.callBackInterface = callBackInterface;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 方法中调用接口方法</span></span><br><span class="line"><span class="comment">    **/</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doSomething</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"employee......do something..."</span>);</span><br><span class="line">        callBackInterface.execute();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Employee employee = <span class="keyword">new</span> Employee();</span><br><span class="line">        employee.setCallBackInterface(<span class="keyword">new</span> Boss());</span><br><span class="line">        employee.doSomething();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>调用该方法，传入接口的实现类</p>
@@ -510,7 +523,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">27</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
