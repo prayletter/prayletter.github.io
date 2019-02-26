@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="prayletter的博客">
 <meta property="og:description" content="线程池的作用面向对象程序开发中，对象的创建需要耗费一定的资源。JAVA中也是类似的，JVM试图跟踪每一个对象，以便在对象销毁时进行垃圾回收。线程池技术重点关注如何缩短线程创建与销毁时间。 ThreadPoolExecutor1234567public ThreadPoolExecutor(int corePoolSize,                              int maxi">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-05T09:51:04.011Z">
+<meta property="og:updated_time" content="2019-02-26T14:13:55.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="线程池">
 <meta name="twitter:description" content="线程池的作用面向对象程序开发中，对象的创建需要耗费一定的资源。JAVA中也是类似的，JVM试图跟踪每一个对象，以便在对象销毁时进行垃圾回收。线程池技术重点关注如何缩短线程创建与销毁时间。 ThreadPoolExecutor1234567public ThreadPoolExecutor(int corePoolSize,                              int maxi">
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-05 17:51:04" itemprop="dateModified" datetime="2019-02-05T17:51:04+08:00">2019-02-05</time>
+                <time title="修改时间：2019-02-26 22:13:55" itemprop="dateModified" datetime="2019-02-26T22:13:55+08:00">2019-02-26</time>
               
             
           </span>
@@ -442,6 +442,14 @@
 <li>若线程池中线程数大于等于<code>corePoolSize</code>，则将任务存入任务处理队列<code>workQueue</code>中。若任务创建与处理速度差异很大，则无界队列会保持快速增长，直到耗尽系统内存。</li>
 </ul>
 <p>PS：说<code>LinkedBlockingQueue</code>是无界队列是不恰当的，其长度是<code>Integer.MAX_VALUE</code>。</p>
+<h3 id="线程池初始化"><a href="#线程池初始化" class="headerlink" title="线程池初始化"></a>线程池初始化</h3><blockquote>
+<p>默认情况下，创建线程池后，线程池中是没有线程的，需要提交任务才会创建线程。<br>当然如果需要创建线程池后就立即创建线程，可以使用下面两个方法：</p>
+<ol>
+<li>prestartCoreThread() 初始化一个核心线程</li>
+<li>prestartAllCoreThreads() 初始化所有核心线程</li>
+</ol>
+</blockquote>
+<h3 id="execute与submit区别"><a href="#execute与submit区别" class="headerlink" title="execute与submit区别"></a>execute与submit区别</h3><p><code>execute</code>与<code>submit</code>都是向线程池提交任务，但是<code>submit</code>会返回一个<code>future</code>，通过<code>future</code>可以获取任务运行的结果。</p>
 
       
     </div>
@@ -557,7 +565,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -596,7 +604,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -632,7 +642,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的作用"><span class="nav-text">线程池的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-text">ThreadPoolExecutor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池中添加任务"><span class="nav-text">线程池中添加任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用线程池"><span class="nav-text">常用线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#newSingleThreadExecutor"><span class="nav-text">newSingleThreadExecutor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newCachedThreadPool"><span class="nav-text">newCachedThreadPool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newFixedThreadPool"><span class="nav-text">newFixedThreadPool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newSingleThreadScheduledExecutor"><span class="nav-text">newSingleThreadScheduledExecutor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newScheduledThreadPool"><span class="nav-text">newScheduledThreadPool</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有界队列"><span class="nav-text">有界队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无界队列"><span class="nav-text">无界队列</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池的作用"><span class="nav-text">线程池的作用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadPoolExecutor"><span class="nav-text">ThreadPoolExecutor</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池中添加任务"><span class="nav-text">线程池中添加任务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用线程池"><span class="nav-text">常用线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#newSingleThreadExecutor"><span class="nav-text">newSingleThreadExecutor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newCachedThreadPool"><span class="nav-text">newCachedThreadPool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newFixedThreadPool"><span class="nav-text">newFixedThreadPool</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newSingleThreadScheduledExecutor"><span class="nav-text">newSingleThreadScheduledExecutor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#newScheduledThreadPool"><span class="nav-text">newScheduledThreadPool</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#有界队列"><span class="nav-text">有界队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#无界队列"><span class="nav-text">无界队列</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程池初始化"><span class="nav-text">线程池初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#execute与submit区别"><span class="nav-text">execute与submit区别</span></a></li></ol></div>
             
 
           </div>
