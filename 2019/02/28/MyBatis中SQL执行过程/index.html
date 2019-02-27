@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="HTTPHTTP超文本传输协议，是客户端与浏览器数据请求与响应的协议，HTTP采用明文进行信息传输，不提供任何方式的信息加密，很容易被攻击者窃取导致信息泄露。同时，客户端与服务器都无法验证对方身份。">
-<meta name="keywords" content="HTTP,HTTPS">
+  <meta name="description" content="根据配置文件创建SqlSessionFactory，并调用openSession获取一个SqlSession。 获取Dao接口的实现，会得到一个Dao接口的代理对象，一个Dao接口对应一个代理对象 Executor生成动态SQL，并维护缓存 PrepareStatementHander设置SQL参数 执行SQL ResultSetHandler封装结果集">
+<meta name="keywords" content="MyBatis">
 <meta property="og:type" content="article">
-<meta property="og:title" content="HTTP与HTTPS">
-<meta property="og:url" content="http://yoursite.com/2019/02/17/HTTP与HTTPS/index.html">
+<meta property="og:title" content="MyBatis执行SQL过程">
+<meta property="og:url" content="http://yoursite.com/2019/02/28/MyBatis中SQL执行过程/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="HTTPHTTP超文本传输协议，是客户端与浏览器数据请求与响应的协议，HTTP采用明文进行信息传输，不提供任何方式的信息加密，很容易被攻击者窃取导致信息泄露。同时，客户端与服务器都无法验证对方身份。">
+<meta property="og:description" content="根据配置文件创建SqlSessionFactory，并调用openSession获取一个SqlSession。 获取Dao接口的实现，会得到一个Dao接口的代理对象，一个Dao接口对应一个代理对象 Executor生成动态SQL，并维护缓存 PrepareStatementHander设置SQL参数 执行SQL ResultSetHandler封装结果集">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-20T11:19:57.643Z">
+<meta property="og:updated_time" content="2019-02-27T16:47:15.437Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="HTTP与HTTPS">
-<meta name="twitter:description" content="HTTPHTTP超文本传输协议，是客户端与浏览器数据请求与响应的协议，HTTP采用明文进行信息传输，不提供任何方式的信息加密，很容易被攻击者窃取导致信息泄露。同时，客户端与服务器都无法验证对方身份。">
+<meta name="twitter:title" content="MyBatis执行SQL过程">
+<meta name="twitter:description" content="根据配置文件创建SqlSessionFactory，并调用openSession获取一个SqlSession。 获取Dao接口的实现，会得到一个Dao接口的代理对象，一个Dao接口对应一个代理对象 Executor生成动态SQL，并维护缓存 PrepareStatementHander设置SQL参数 执行SQL ResultSetHandler封装结果集">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/17/HTTP与HTTPS/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/MyBatis中SQL执行过程/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>HTTP与HTTPS | prayletter的博客</title>
+  <title>MyBatis执行SQL过程 | prayletter的博客</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/17/HTTP与HTTPS/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/MyBatis中SQL执行过程/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">HTTP与HTTPS
+          <h1 class="post-title" itemprop="name headline">MyBatis执行SQL过程
               
             
           </h1>
@@ -331,24 +331,12 @@
                 
               
 
-              <time title="创建时间：2019-02-17 16:43:00" itemprop="dateCreated datePublished" datetime="2019-02-17T16:43:00+08:00">2019-02-17</time>
+              <time title="创建时间：2019-02-28 00:47:00 / 修改时间：00:47:15" itemprop="dateCreated datePublished" datetime="2019-02-28T00:47:00+08:00">2019-02-28</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-02-20 19:19:57" itemprop="dateModified" datetime="2019-02-20T19:19:57+08:00">2019-02-20</time>
               
             
           </span>
@@ -361,7 +349,7 @@
 
           
           
-             <span id="/2019/02/17/HTTP与HTTPS/" class="leancloud_visitors" data-flag-title="HTTP与HTTPS">
+             <span id="/2019/02/28/MyBatis中SQL执行过程/" class="leancloud_visitors" data-flag-title="MyBatis执行SQL过程">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -392,24 +380,13 @@
       
 
       
-        <h3 id="HTTP"><a href="#HTTP" class="headerlink" title="HTTP"></a>HTTP</h3><p>HTTP超文本传输协议，是客户端与浏览器数据请求与响应的协议，HTTP采用明文进行信息传输，不提供任何方式的信息加密，很容易被攻击者窃取导致信息泄露。同时，客户端与服务器都无法验证对方身份。</p>
-<a id="more"></a>
-<h3 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h3><p>HTTPS安全套接字层超文本传输协议，简单而言就是HTTP协议的安全版。它在HTTP的基础上增加了SSL层，作用是：1、对浏览器与服务器之间传输的信息进行加密；2、验证服务器的身份。</p>
-<h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ul>
-<li>端口不同。HTTP使用80端口，HTTPS使用443端口。</li>
-<li>安全性。HTTP明文传输信息，HTTPS对信息进行加密。</li>
-</ul>
-<h3 id="HTTPS缺点"><a href="#HTTPS缺点" class="headerlink" title="HTTPS缺点"></a>HTTPS缺点</h3><ul>
-<li>SSL证书要钱</li>
-<li>采用HTTPS，连接服务器端资源占用增大。</li>
-<li>HTTPS握手阶段比较耗时，有损用户体验。</li>
-</ul>
-<h3 id="HTTPS工作流程"><a href="#HTTPS工作流程" class="headerlink" title="HTTPS工作流程"></a>HTTPS工作流程</h3><ol>
-<li>TCP三次握手</li>
-<li>客户端验证服务器</li>
-<li>DH算法协商对称加密算法与密钥，hash加密密钥</li>
-<li>SSL安全加密隧道</li>
-<li>网站以协商后的加密算法与密钥对数据进行加密，以协商后的Hash加密密钥对数据完整性进行验证。</li>
+        <ol>
+<li>根据配置文件创建<code>SqlSessionFactory</code>，并调用<code>openSession</code>获取一个<code>SqlSession</code>。</li>
+<li>获取Dao接口的实现，会得到一个Dao接口的代理对象，一个Dao接口对应一个代理对象</li>
+<li><code>Executor</code>生成动态SQL，并维护缓存</li>
+<li><code>PrepareStatementHander</code>设置SQL参数</li>
+<li>执行SQL</li>
+<li><code>ResultSetHandler</code>封装结果集</li>
 </ol>
 
       
@@ -431,9 +408,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/HTTP/" rel="tag"># HTTP</a>
-          
-            <a href="/tags/HTTPS/" rel="tag"># HTTPS</a>
+            <a href="/tags/MyBatis/" rel="tag"># MyBatis</a>
           
         </div>
       
@@ -446,8 +421,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/16/MySQL索引/" rel="next" title="MySQL索引">
-                <i class="fa fa-chevron-left"></i> MySQL索引
+              <a href="/2019/02/28/MySQL锁/" rel="next" title="MySQL表锁与行锁">
+                <i class="fa fa-chevron-left"></i> MySQL表锁与行锁
               </a>
             
           </div>
@@ -455,10 +430,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/17/死锁/" rel="prev" title="死锁">
-                死锁 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -503,17 +474,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -597,22 +559,6 @@
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP"><span class="nav-text">HTTP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS"><span class="nav-text">HTTPS</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不同点"><span class="nav-text">不同点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS缺点"><span class="nav-text">HTTPS缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTPS工作流程"><span class="nav-text">HTTPS工作流程</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

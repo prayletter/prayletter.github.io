@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="prayletter的博客">
 <meta property="og:description" content="Spring AOP是通过AOP框架创建AOP代理实现的，AOP代理分为静态代理与动态代理，静态代理以AspectJ为代表，动态代理以Spring AOP为代表。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-26T14:15:03.283Z">
+<meta property="og:updated_time" content="2019-02-27T13:35:24.615Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring AOP实现原理">
 <meta name="twitter:description" content="Spring AOP是通过AOP框架创建AOP代理实现的，AOP代理分为静态代理与动态代理，静态代理以AspectJ为代表，动态代理以Spring AOP为代表。">
@@ -331,12 +331,24 @@
                 
               
 
-              <time title="创建时间：2019-02-26 20:10:00 / 修改时间：22:15:03" itemprop="dateCreated datePublished" datetime="2019-02-26T20:10:00+08:00">2019-02-26</time>
+              <time title="创建时间：2019-02-26 20:10:00" itemprop="dateCreated datePublished" datetime="2019-02-26T20:10:00+08:00">2019-02-26</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-02-27 21:35:24" itemprop="dateModified" datetime="2019-02-27T21:35:24+08:00">2019-02-27</time>
               
             
           </span>
@@ -390,6 +402,8 @@
 <li>如果目标对象的实现类实现了接口，Spring AOP将使用JDK动态代理来生成AOP代理类。</li>
 <li>如果目标对象的实现类没有实现接口，Spring AOP将采用CGLib来生成AOP代理类。</li>
 </ul>
+<h3 id="JDK动态代理"><a href="#JDK动态代理" class="headerlink" title="JDK动态代理"></a>JDK动态代理</h3><p>JDK动态代理只能针对实现了接口的类生成代理，利用拦截器(拦截器需要实现invocationHandler)与反射生成一个实现代理接口的匿名类。</p>
+<h3 id="CGLib动态代理"><a href="#CGLib动态代理" class="headerlink" title="CGLib动态代理"></a>CGLib动态代理</h3><p>CGLib动态代理是基于继承的，通过加载代理对象类的Class文件，修改其字节码生成子类来处理，覆盖其中的方法，实现增强，因为是采用的继承，所以类和方法最好不要声明为<code>final</code>，对于<code>final</code>的类与方法是无法继承的。</p>
 
       
     </div>
@@ -480,8 +494,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -496,7 +519,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">35</span>
+                    <span class="site-state-item-count">38</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -537,7 +560,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -563,6 +588,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK动态代理"><span class="nav-text">JDK动态代理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CGLib动态代理"><span class="nav-text">CGLib动态代理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
