@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="调用构造方法创建Bean123456789package com.prayletter.crept;public class Person &amp;#123;    private String name;    public Person(String name) &amp;#123;        this.name = name;    &amp;#125;&amp;#125;">
-<meta name="keywords" content="Spring">
+  <meta name="description" content="抢锁 判断锁的状态  如果是0，尝试原子抢占该锁； 如果不是0，判断持有锁的线程与当前线程是不是同一个线程，如果是同一个，去增加状态变量的值 其他情况获取锁失败">
+<meta name="keywords" content="JAVA">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Spring实例化Bean的三种方式">
-<meta property="og:url" content="http://yoursite.com/2019/02/20/Spring创建Bean的三种方式/index.html">
+<meta property="og:title" content="可重入锁">
+<meta property="og:url" content="http://yoursite.com/2019/02/28/可重入锁的原理/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="调用构造方法创建Bean123456789package com.prayletter.crept;public class Person &amp;#123;    private String name;    public Person(String name) &amp;#123;        this.name = name;    &amp;#125;&amp;#125;">
+<meta property="og:description" content="抢锁 判断锁的状态  如果是0，尝试原子抢占该锁； 如果不是0，判断持有锁的线程与当前线程是不是同一个线程，如果是同一个，去增加状态变量的值 其他情况获取锁失败">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-20T11:19:50.515Z">
+<meta property="og:updated_time" content="2019-02-28T15:12:10.028Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring实例化Bean的三种方式">
-<meta name="twitter:description" content="调用构造方法创建Bean123456789package com.prayletter.crept;public class Person &amp;#123;    private String name;    public Person(String name) &amp;#123;        this.name = name;    &amp;#125;&amp;#125;">
+<meta name="twitter:title" content="可重入锁">
+<meta name="twitter:description" content="抢锁 判断锁的状态  如果是0，尝试原子抢占该锁； 如果不是0，判断持有锁的线程与当前线程是不是同一个线程，如果是同一个，去增加状态变量的值 其他情况获取锁失败">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/02/20/Spring创建Bean的三种方式/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/02/28/可重入锁的原理/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>Spring实例化Bean的三种方式 | prayletter的博客</title>
+  <title>可重入锁 | prayletter的博客</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/20/Spring创建Bean的三种方式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/28/可重入锁的原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Spring实例化Bean的三种方式
+          <h1 class="post-title" itemprop="name headline">可重入锁
               
             
           </h1>
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-02-20 12:34:00 / 修改时间：19:19:50" itemprop="dateCreated datePublished" datetime="2019-02-20T12:34:00+08:00">2019-02-20</time>
+              <time title="创建时间：2019-02-28 23:11:00 / 修改时间：23:12:10" itemprop="dateCreated datePublished" datetime="2019-02-28T23:11:00+08:00">2019-02-28</time>
             
 
             
@@ -349,7 +349,7 @@
 
           
           
-             <span id="/2019/02/20/Spring创建Bean的三种方式/" class="leancloud_visitors" data-flag-title="Spring实例化Bean的三种方式">
+             <span id="/2019/02/28/可重入锁的原理/" class="leancloud_visitors" data-flag-title="可重入锁">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -380,14 +380,31 @@
       
 
       
-        <h3 id="调用构造方法创建Bean"><a href="#调用构造方法创建Bean" class="headerlink" title="调用构造方法创建Bean"></a>调用构造方法创建Bean</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.prayletter.crept;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"person"</span> <span class="attr">class</span>=<span class="string">"com.prayletter.crept"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"prayletter"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="调用静态工厂创建Bean"><a href="#调用静态工厂创建Bean" class="headerlink" title="调用静态工厂创建Bean"></a>调用静态工厂创建Bean</h3><p>顾名思义，把创建Bean的任务交给了静态工厂</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PersonFactory</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Person getPerson &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Person;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"person"</span> <span class="attr">class</span>=<span class="string">"com.prayletter.crept.PersonFactory"</span> <span class="attr">factory-method</span>=<span class="string">"getPerson"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">constructor-arg</span> <span class="attr">name</span>=<span class="string">"name"</span> <span class="attr">value</span>=<span class="string">"prayletter"</span>&gt;</span><span class="tag">&lt;/<span class="name">constructor-arg</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 如果factory-method方法有参数，可以通过 property 属性进行指定--&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">bean</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="调用实例工厂方法创建Bean"><a href="#调用实例工厂方法创建Bean" class="headerlink" title="调用实例工厂方法创建Bean"></a>调用实例工厂方法创建Bean</h3><p>先创建该工厂的实例，然后通过引用该工厂Bean的id创建其他Bean。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"personFactory"</span> <span class="attr">class</span>=<span class="string">"com.prayletter.instanceFactory.PersonFactory"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">bean</span> <span class="attr">id</span>=<span class="string">"person"</span> <span class="attr">factory-bean</span>=<span class="string">"personFactory"</span> <span class="attr">factory-method</span>=<span class="string">"getPerson"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+        <h3 id="抢锁"><a href="#抢锁" class="headerlink" title="抢锁"></a>抢锁</h3><ol>
+<li><p>判断锁的状态</p>
+<ul>
+<li>如果是0，尝试原子抢占该锁；</li>
+<li>如果不是0，判断持有锁的线程与当前线程是不是同一个线程，如果是同一个，去增加状态变量的值</li>
+<li>其他情况获取锁失败<a id="more"></a>
+</li>
+</ul>
+</li>
+<li><p>上述步骤失败后，在等待队列中增加一个保存当前线程的节点；</p>
+</li>
+<li>进入等待队列，如果头节点释放了锁，头节点的下一个节点就会被唤醒，重新尝试去获取锁；</li>
+<li>如果尝试获取锁失败，根据前一个节点的状态判断当前线程是否需要被挂起。<ul>
+<li>前一个节点状态是<code>SIGNAL</code>，需要被挂起</li>
+<li>前一个节点是取消状态，则需要将取消节点从队列中移除</li>
+<li>前一个节点是其他状态，则将前一个节点设置成<code>SIGNAL</code>，当前节点不需要挂起，进行二次抢占 </li>
+</ul>
+</li>
+</ol>
+<h3 id="释放锁"><a href="#释放锁" class="headerlink" title="释放锁"></a>释放锁</h3><ol>
+<li>尝试去除锁的独自线程，并将状态变量减一，主要因为可重入锁自身可能多次占用锁，只有状态变为0，才表示完全释放了锁</li>
+<li>释放锁成功后，将头节点的状态修改为0，然后唤醒下一个非取消节点线程</li>
+<li>被唤醒的线程进入<strong>抢锁</strong>第4步</li>
+</ol>
+<h3 id="公平锁非公平锁的区别"><a href="#公平锁非公平锁的区别" class="headerlink" title="公平锁非公平锁的区别"></a>公平锁非公平锁的区别</h3><p>对于公平锁，如果等待队列中有节点，那么新进入竞争的节点一定要在等待队列中排队。而非公平锁，无视等待队列中的节点，直接进行抢占，这有可能导致等待队列中的节点永远无法获取到锁。</p>
 
       
     </div>
@@ -408,7 +425,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Spring/" rel="tag"># Spring</a>
+            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
           
         </div>
       
@@ -421,8 +438,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/17/死锁/" rel="next" title="死锁">
-                <i class="fa fa-chevron-left"></i> 死锁
+              <a href="/2019/02/28/MyBatis中SQL执行过程/" rel="next" title="MyBatis执行SQL过程">
+                <i class="fa fa-chevron-left"></i> MyBatis执行SQL过程
               </a>
             
           </div>
@@ -430,10 +447,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/20/yield/" rel="prev" title="yield">
-                yield <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -582,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用构造方法创建Bean"><span class="nav-text">调用构造方法创建Bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用静态工厂创建Bean"><span class="nav-text">调用静态工厂创建Bean</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用实例工厂方法创建Bean"><span class="nav-text">调用实例工厂方法创建Bean</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#抢锁"><span class="nav-text">抢锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#释放锁"><span class="nav-text">释放锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#公平锁非公平锁的区别"><span class="nav-text">公平锁非公平锁的区别</span></a></li></ol></div>
             
 
           </div>
