@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="表锁 InnoDB的行锁是针对索引加的锁，如果锁失效，则会从行锁升级为表锁。   开销小、加锁快、无死锁 锁粒度大、锁冲突概率高、并发处理能力低 查询操作自动给涉及表加读锁，更新操作自动给涉及表加写锁。">
+  <meta name="description" content="表锁 InnoDB的行锁是针对索引加的锁，如果锁失效，则会从行锁升级为表锁。   开销小、加锁快、无死锁 锁粒度大、锁冲突概率高、并发处理能力低 查询操作自动给涉及表加读锁，更新操作自动给涉及表加写锁。 Myisam引擎采用的是表锁">
 <meta name="keywords" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL表锁与行锁">
 <meta property="og:url" content="http://yoursite.com/2019/02/28/MySQL锁/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="表锁 InnoDB的行锁是针对索引加的锁，如果锁失效，则会从行锁升级为表锁。   开销小、加锁快、无死锁 锁粒度大、锁冲突概率高、并发处理能力低 查询操作自动给涉及表加读锁，更新操作自动给涉及表加写锁。">
+<meta property="og:description" content="表锁 InnoDB的行锁是针对索引加的锁，如果锁失效，则会从行锁升级为表锁。   开销小、加锁快、无死锁 锁粒度大、锁冲突概率高、并发处理能力低 查询操作自动给涉及表加读锁，更新操作自动给涉及表加写锁。 Myisam引擎采用的是表锁">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-27T16:48:27.712Z">
+<meta property="og:updated_time" content="2019-03-03T09:37:38.646Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL表锁与行锁">
-<meta name="twitter:description" content="表锁 InnoDB的行锁是针对索引加的锁，如果锁失效，则会从行锁升级为表锁。   开销小、加锁快、无死锁 锁粒度大、锁冲突概率高、并发处理能力低 查询操作自动给涉及表加读锁，更新操作自动给涉及表加写锁。">
+<meta name="twitter:description" content="表锁 InnoDB的行锁是针对索引加的锁，如果锁失效，则会从行锁升级为表锁。   开销小、加锁快、无死锁 锁粒度大、锁冲突概率高、并发处理能力低 查询操作自动给涉及表加读锁，更新操作自动给涉及表加写锁。 Myisam引擎采用的是表锁">
 
 
 
@@ -331,12 +331,24 @@
                 
               
 
-              <time title="创建时间：2019-02-28 00:46:00 / 修改时间：00:48:27" itemprop="dateCreated datePublished" datetime="2019-02-28T00:46:00+08:00">2019-02-28</time>
+              <time title="创建时间：2019-02-28 00:46:00" itemprop="dateCreated datePublished" datetime="2019-02-28T00:46:00+08:00">2019-02-28</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-03 17:37:38" itemprop="dateModified" datetime="2019-03-03T17:37:38+08:00">2019-03-03</time>
               
             
           </span>
@@ -386,15 +398,25 @@
 <ul>
 <li>开销小、加锁快、无死锁</li>
 <li>锁粒度大、锁冲突概率高、并发处理能力低</li>
-<li>查询操作自动给涉及表加读锁，更新操作自动给涉及表加写锁。<a id="more"></a>
-</li>
+<li>查询操作自动给涉及表加读锁，更新操作自动给涉及表加写锁。</li>
+<li>Myisam引擎采用的是表锁</li>
 </ul>
+<a id="more"></a>
 <p><strong>什么情况下应该使用表锁：</strong></p>
 <ul>
 <li>全表更新。更新大量或全部数据，若使用行锁，事务执行效率很低，从而造成其他事务长时间锁等待和更多的锁冲突。</li>
 <li>多表查询。事务涉及多张表，关联查询复杂，很可能引起死锁和事务回滚，若一次性锁住事务所涉及的表，就能避免死锁、减少数据库因事务回滚带来的开销。</li>
 </ul>
 <h3 id="行锁"><a href="#行锁" class="headerlink" title="行锁"></a>行锁</h3><p>InnoDB默认采用行锁，未使用索引的字段查询会自动升级为表锁。</p>
+<h3 id="两阶段加锁"><a href="#两阶段加锁" class="headerlink" title="两阶段加锁"></a>两阶段加锁</h3><p>MySQL中innorDB引擎里的加锁协议，保证单机事务的一致性与隔离性。</p>
+<p>MySQL执行事务的时候分两阶段进行加锁/解锁：</p>
+<ul>
+<li>在事务中只有提交<code>commit</code>或回滚<code>rollback</code>才是解锁阶段</li>
+<li>其他时间为加锁阶段</li>
+</ul>
+<p>因此，建议将热点数据放在事务最后执行。</p>
+<h3 id="严格两阶段封锁协议"><a href="#严格两阶段封锁协议" class="headerlink" title="严格两阶段封锁协议"></a>严格两阶段封锁协议</h3><p>严格两阶段封锁协议除了要求封锁是两阶段外，还要求事务所持有的所有排它锁必须在事务提交后才能释放。这个要求保证在事务中所写的任何数据，在事务提交前都已排他锁封锁，防止其他事务读取这些数据。</p>
+<h3 id="强两阶段封锁协议"><a href="#强两阶段封锁协议" class="headerlink" title="强两阶段封锁协议"></a>强两阶段封锁协议</h3><p>强两阶段封锁协议要求事务提交之前不能释放任何锁。</p>
 
       
     </div>
@@ -428,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/27/进程与线程/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2019/02/26/MySQL查询时字符数字转换/" rel="next" title="MySQL查询字符数字转换">
+                <i class="fa fa-chevron-left"></i> MySQL查询字符数字转换
               </a>
             
           </div>
@@ -510,7 +532,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">50</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -553,7 +575,23 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -589,7 +627,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#表锁"><span class="nav-text">表锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行锁"><span class="nav-text">行锁</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#表锁"><span class="nav-text">表锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#行锁"><span class="nav-text">行锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两阶段加锁"><span class="nav-text">两阶段加锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#严格两阶段封锁协议"><span class="nav-text">严格两阶段封锁协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#强两阶段封锁协议"><span class="nav-text">强两阶段封锁协议</span></a></li></ol></div>
             
 
           </div>
