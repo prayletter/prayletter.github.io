@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="prayletter的博客">
 <meta property="og:description" content="NIO模型用户发起read操作后，可以立即去做其他操作。从内核角度来看，内核接受到asynchronous read之后会立刻返回，不会阻塞用户线程。由内核等待数据准备完成，然后将数据拷贝到用户线程中，并给用户发送一个信号，告知read操作已完成。整个read操作不会阻塞用户线程，用户只需要发送一个请求，当接受到内核返回的成功信号后，可以直接去使用数据了。 JAVA底层JAVA7中提供了Async">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-06T11:51:31.506Z">
+<meta property="og:updated_time" content="2019-03-10T12:57:03.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NIO">
 <meta name="twitter:description" content="NIO模型用户发起read操作后，可以立即去做其他操作。从内核角度来看，内核接受到asynchronous read之后会立刻返回，不会阻塞用户线程。由内核等待数据准备完成，然后将数据拷贝到用户线程中，并给用户发送一个信号，告知read操作已完成。整个read操作不会阻塞用户线程，用户只需要发送一个请求，当接受到内核返回的成功信号后，可以直接去使用数据了。 JAVA底层JAVA7中提供了Async">
@@ -330,12 +330,24 @@
                 
               
 
-              <time title="创建时间：2019-02-06 19:51:00 / 修改时间：19:51:31" itemprop="dateCreated datePublished" datetime="2019-02-06T19:51:00+08:00">2019-02-06</time>
+              <time title="创建时间：2019-02-06 19:51:00" itemprop="dateCreated datePublished" datetime="2019-02-06T19:51:00+08:00">2019-02-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-10 20:57:03" itemprop="dateModified" datetime="2019-03-10T20:57:03+08:00">2019-03-10</time>
               
             
           </span>
@@ -381,6 +393,12 @@
       
         <h1 id="NIO模型"><a href="#NIO模型" class="headerlink" title="NIO模型"></a>NIO模型</h1><p>用户发起read操作后，可以立即去做其他操作。从内核角度来看，内核接受到asynchronous read之后会立刻返回，不会阻塞用户线程。由内核等待数据准备完成，然后将数据拷贝到用户线程中，并给用户发送一个信号，告知read操作已完成。整个read操作不会阻塞用户线程，用户只需要发送一个请求，当接受到内核返回的成功信号后，可以直接去使用数据了。</p>
 <h3 id="JAVA底层"><a href="#JAVA底层" class="headerlink" title="JAVA底层"></a>JAVA底层</h3><p>JAVA7中提供了<code>Asynchronous IO</code></p>
+<h3 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h3><ul>
+<li>NIO客户端/服务器框架</li>
+<li>高性能、异步事件驱动的NIO框架，提供了对TCP、UDP和文件传输的支持</li>
+<li>异步NIO框架，所有的IO操作都是异步的</li>
+<li>一些著名的开源组件是基于Netty开发，如分布式通讯框架Dubbo</li>
+</ul>
 
       
     </div>
@@ -490,7 +508,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -549,7 +567,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -585,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NIO模型"><span class="nav-text">NIO模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA底层"><span class="nav-text">JAVA底层</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#NIO模型"><span class="nav-text">NIO模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JAVA底层"><span class="nav-text">JAVA底层</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Netty"><span class="nav-text">Netty</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="prayletter的博客">
 <meta property="og:description" content="目的JVM为了提高性能，减少内存的消耗 位置字符串常量池位于方法区 原理创建字符串常量时，首先会在字符串常量池中检查该字符串是否已存在，若存在，返回该字符串的引用实例，若不存在，实例化该字符串并放入字符串常量池中。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-26T14:41:36.887Z">
+<meta property="og:updated_time" content="2019-03-13T14:24:08.656Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="字符串常量池">
 <meta name="twitter:description" content="目的JVM为了提高性能，减少内存的消耗 位置字符串常量池位于方法区 原理创建字符串常量时，首先会在字符串常量池中检查该字符串是否已存在，若存在，返回该字符串的引用实例，若不存在，实例化该字符串并放入字符串常量池中。">
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-26 22:41:36" itemprop="dateModified" datetime="2019-01-26T22:41:36+08:00">2019-01-26</time>
+                <time title="修改时间：2019-03-13 22:24:08" itemprop="dateModified" datetime="2019-03-13T22:24:08+08:00">2019-03-13</time>
               
             
           </span>
@@ -392,15 +392,18 @@
       
 
       
-        <h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>JVM为了提高性能，减少内存的消耗</p>
-<h2 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h2><p>字符串常量池位于<strong>方法区</strong></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>创建字符串常量时，首先会在<strong>字符串常量池</strong>中检查该字符串是否已存在，若存在，返回该字符串的<strong>引用实例</strong>，若不存在，实例化该字符串并放入字符串常量池中。</p>
+        <h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>JVM为了提高性能，减少内存的消耗</p>
+<h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><p>字符串常量池位于<strong>方法区</strong></p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>创建字符串常量时，首先会在<strong>字符串常量池</strong>中检查该字符串是否已存在，若存在，返回该字符串的<strong>引用实例</strong>，若不存在，实例化该字符串并放入字符串常量池中。</p>
 <a id="more"></a>
-<h2 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h2><p>使用String中的<code>intern()</code>方法。</p>
+<h3 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h3><p>使用String中的<code>intern()</code>方法。</p>
 <blockquote>
 <p><code>intern()</code>方法会将新建的字符串常量放入<strong>字符串常量池</strong>中</p>
 </blockquote>
-<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"cat"</span>;</span><br><span class="line">String s2 = <span class="string">"cat"</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"cat"</span>);</span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">"cat"</span>).intern();</span><br><span class="line"></span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// true</span></span><br><span class="line">System.out.println(s1 == s3); <span class="comment">// false</span></span><br><span class="line">System.out.println(s1 == s4); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">String s1 = <span class="string">"cat"</span>;</span><br><span class="line">String s2 = <span class="string">"cat"</span>;</span><br><span class="line">String s3 = <span class="keyword">new</span> String(<span class="string">"cat"</span>);</span><br><span class="line">String s4 = <span class="keyword">new</span> String(<span class="string">"cat"</span>).intern();</span><br><span class="line"></span><br><span class="line">System.out.println(s1 == s2); <span class="comment">// true</span></span><br><span class="line">System.out.println(s1 == s3); <span class="comment">// false</span></span><br><span class="line">System.out.println(s1 == s4); <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="什么时候垃圾回收"><a href="#什么时候垃圾回收" class="headerlink" title="什么时候垃圾回收"></a>什么时候垃圾回收</h3><p>方法区的垃圾回收主要回收<strong>废弃常量</strong>与<strong>无用类</strong>。</p>
+<pre><code>- 废弃常量。以常量池中的字面量为例，假如一个字符串&quot;abc&quot;进入常量池，但是当前系统中没有任何String对象引用常量池中的&quot;abc&quot;常量，也没有别的地方引用这个字面量，如果这个时候发生垃圾回收，这个&quot;abc&quot;常量就会被清除。
+</code></pre>
       
     </div>
 
@@ -515,7 +518,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">61</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -574,7 +577,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">22</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -610,7 +619,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-text">目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#位置"><span class="nav-text">位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原理"><span class="nav-text">原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#优化"><span class="nav-text">优化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#目的"><span class="nav-text">目的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#位置"><span class="nav-text">位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化"><span class="nav-text">优化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#例子"><span class="nav-text">例子</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么时候垃圾回收"><span class="nav-text">什么时候垃圾回收</span></a></li></ol></div>
             
 
           </div>
