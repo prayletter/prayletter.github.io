@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="区别 持久化。memcached不支持数据持久化。redis内建了两种持久化方案，Snapshot快照与AOF增量Log。Snapshot快照顾名思义，每隔一段时间将完整的数据dump下来。AOF增量Log则是记录对数据的修改操作，即记录修改数据的每一条指令。 memcached只支持key-value形式的。redis除了支持简单的key-value数据类型，还支持更丰富的数据结构，例如set、">
+  <meta name="description" content="Redis持久化Snapshotting快照 将内存中的数据以二进制的方式写入到二进制文件中，默认文件名是dump.rdb。可以通过配置自动进行快照持久化。">
 <meta name="keywords" content="缓存">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis与memcached">
 <meta property="og:url" content="http://yoursite.com/2019/03/03/redis与memcached/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="区别 持久化。memcached不支持数据持久化。redis内建了两种持久化方案，Snapshot快照与AOF增量Log。Snapshot快照顾名思义，每隔一段时间将完整的数据dump下来。AOF增量Log则是记录对数据的修改操作，即记录修改数据的每一条指令。 memcached只支持key-value形式的。redis除了支持简单的key-value数据类型，还支持更丰富的数据结构，例如set、">
+<meta property="og:description" content="Redis持久化Snapshotting快照 将内存中的数据以二进制的方式写入到二进制文件中，默认文件名是dump.rdb。可以通过配置自动进行快照持久化。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-04T16:22:07.767Z">
+<meta property="og:updated_time" content="2019-03-17T04:00:53.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis与memcached">
-<meta name="twitter:description" content="区别 持久化。memcached不支持数据持久化。redis内建了两种持久化方案，Snapshot快照与AOF增量Log。Snapshot快照顾名思义，每隔一段时间将完整的数据dump下来。AOF增量Log则是记录对数据的修改操作，即记录修改数据的每一条指令。 memcached只支持key-value形式的。redis除了支持简单的key-value数据类型，还支持更丰富的数据结构，例如set、">
+<meta name="twitter:description" content="Redis持久化Snapshotting快照 将内存中的数据以二进制的方式写入到二进制文件中，默认文件名是dump.rdb。可以通过配置自动进行快照持久化。">
 
 
 
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-05 00:22:07" itemprop="dateModified" datetime="2019-03-05T00:22:07+08:00">2019-03-05</time>
+                <time title="修改时间：2019-03-17 12:00:53" itemprop="dateModified" datetime="2019-03-17T12:00:53+08:00">2019-03-17</time>
               
             
           </span>
@@ -392,7 +392,19 @@
       
 
       
-        <h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
+        <h3 id="Redis持久化"><a href="#Redis持久化" class="headerlink" title="Redis持久化"></a>Redis持久化</h3><p><strong>Snapshotting快照</strong></p>
+<p>将内存中的数据以二进制的方式写入到二进制文件中，默认文件名是<code>dump.rdb</code>。可以通过配置自动进行快照持久化。</p>
+<a id="more"></a>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">save 900 1 #900秒内超过一个key被修改，则发起快照保存</span><br><span class="line">save 300 10 #300秒内超过10个key被修改，则发起快照保存</span><br><span class="line">sava 60 1000 #60秒内超过1000个key被修改，则发起快照保存</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>因为快照是一段时间内进行进行一次，如果redis意外down掉了，就会丢失最后一次快照后的所有修改。</p>
+</blockquote>
+<p><strong>AOF</strong><br>redis没收到一个写命令时都通过write函数追加到文件中，默认文件名appendonly.aof。可以通过配置指定os写入磁盘的时间。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">appendonly yes #启用aof持久化方式</span><br><span class="line">appendfsync always #每次收到写命令都立即写入磁盘，最慢，但保证持久化</span><br><span class="line">appendfsync everysec #每秒强制写入磁盘，折中方案</span><br><span class="line">appendfsync no #完全依赖os，性能最好，持久化没保证</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>AOF写入文件的操作并没有操作原有aof文件，而是将内存中的数据库写入到一个临时文件中。</p>
+</blockquote>
+<h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
 <li>持久化。memcached不支持数据持久化。redis内建了两种持久化方案，Snapshot快照与AOF增量Log。Snapshot快照顾名思义，每隔一段时间将完整的数据dump下来。AOF增量Log则是记录对数据的修改操作，即记录修改数据的每一条指令。</li>
 <li>memcached只支持key-value形式的。redis除了支持简单的key-value数据类型，还支持更丰富的数据结构，例如set、list、zset等。</li>
 <li>redis支持master-slave备份。</li>
@@ -513,7 +525,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">61</span>
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -578,7 +590,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -614,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-text">区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Redis持久化"><span class="nav-text">Redis持久化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#区别"><span class="nav-text">区别</span></a></li></ol></div>
             
 
           </div>

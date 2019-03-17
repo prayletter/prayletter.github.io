@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="事务的四大特性 原子性(Atomicity)  一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
-<meta name="keywords" content="JAVA">
+  <meta name="description" content="缺点与挑战 微服务的分布式带来的复杂性。需要机遇RPC、消息来实现服务间的调用与通信，服务调用链的跟踪与质量问题。 业务逻辑的拆分 分布式事务 测试复杂">
+<meta name="keywords" content="微服务">
 <meta property="og:type" content="article">
-<meta property="og:title" content="事务的特性与隔离级别">
-<meta property="og:url" content="http://yoursite.com/2019/01/20/事务的特性与隔离级别/index.html">
+<meta property="og:title" content="对微服务的理解">
+<meta property="og:url" content="http://yoursite.com/2019/03/14/对微服务的理解/index.html">
 <meta property="og:site_name" content="prayletter的博客">
-<meta property="og:description" content="事务的四大特性 原子性(Atomicity)  一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
+<meta property="og:description" content="缺点与挑战 微服务的分布式带来的复杂性。需要机遇RPC、消息来实现服务间的调用与通信，服务调用链的跟踪与质量问题。 业务逻辑的拆分 分布式事务 测试复杂">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-01-26T13:08:35.423Z">
+<meta property="og:updated_time" content="2019-03-17T04:17:06.988Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="事务的特性与隔离级别">
-<meta name="twitter:description" content="事务的四大特性 原子性(Atomicity)  一致性(Consistency) 隔离性(Isolation) 持久性(Durability)">
+<meta name="twitter:title" content="对微服务的理解">
+<meta name="twitter:description" content="缺点与挑战 微服务的分布式带来的复杂性。需要机遇RPC、消息来实现服务间的调用与通信，服务调用链的跟踪与质量问题。 业务逻辑的拆分 分布式事务 测试复杂">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/01/20/事务的特性与隔离级别/"/>
+  <link rel="canonical" href="http://yoursite.com/2019/03/14/对微服务的理解/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>事务的特性与隔离级别 | prayletter的博客</title>
+  <title>对微服务的理解 | prayletter的博客</title>
   
 
 
@@ -289,7 +289,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/20/事务的特性与隔离级别/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/对微服务的理解/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -306,7 +306,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">事务的特性与隔离级别
+          <h1 class="post-title" itemprop="name headline">对微服务的理解
               
             
           </h1>
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-01-20 17:43:00" itemprop="dateCreated datePublished" datetime="2019-01-20T17:43:00+08:00">2019-01-20</time>
+              <time title="创建时间：2019-03-14 21:39:00" itemprop="dateCreated datePublished" datetime="2019-03-14T21:39:00+08:00">2019-03-14</time>
             
 
             
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-01-26 21:08:35" itemprop="dateModified" datetime="2019-01-26T21:08:35+08:00">2019-01-26</time>
+                <time title="修改时间：2019-03-17 12:17:06" itemprop="dateModified" datetime="2019-03-17T12:17:06+08:00">2019-03-17</time>
               
             
           </span>
@@ -361,7 +361,7 @@
 
           
           
-             <span id="/2019/01/20/事务的特性与隔离级别/" class="leancloud_visitors" data-flag-title="事务的特性与隔离级别">
+             <span id="/2019/03/14/对微服务的理解/" class="leancloud_visitors" data-flag-title="对微服务的理解">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -392,13 +392,12 @@
       
 
       
-        <h2 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h2><ol>
-<li>原子性(Atomicity) </li>
-<li>一致性(Consistency)</li>
-<li>隔离性(Isolation)</li>
-<li>持久性(Durability)</li>
-</ol>
-<a id="more"></a>
+        <h3 id="缺点与挑战"><a href="#缺点与挑战" class="headerlink" title="缺点与挑战"></a>缺点与挑战</h3><ul>
+<li>微服务的分布式带来的复杂性。需要机遇RPC、消息来实现服务间的调用与通信，服务调用链的跟踪与质量问题。</li>
+<li>业务逻辑的拆分</li>
+<li>分布式事务</li>
+<li>测试复杂</li>
+</ul>
 
       
     </div>
@@ -419,7 +418,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/JAVA/" rel="tag"># JAVA</a>
+            <a href="/tags/微服务/" rel="tag"># 微服务</a>
           
         </div>
       
@@ -432,8 +431,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/20/JAVA内存模型/" rel="next" title="JAVA内存模型">
-                <i class="fa fa-chevron-left"></i> JAVA内存模型
+              <a href="/2019/03/14/BeanFactory与FactoryBean/" rel="next" title="BeanFactory与FactoryBean">
+                <i class="fa fa-chevron-left"></i> BeanFactory与FactoryBean
               </a>
             
           </div>
@@ -441,10 +440,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/01/27/垃圾收集器/" rel="prev" title="垃圾收集器">
-                垃圾收集器 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -514,7 +509,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">39</span>
+                    <span class="site-state-item-count">63</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -557,7 +552,31 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -593,7 +612,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#事务的四大特性"><span class="nav-text">事务的四大特性</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#缺点与挑战"><span class="nav-text">缺点与挑战</span></a></li></ol></div>
             
 
           </div>
