@@ -285,7 +285,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/MySQL脏页/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/ConcurrentHashMap/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -304,8 +304,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/17/MySQL脏页/" itemprop="url">
-                  MySQL脏页
+                <a class="post-title-link" href="/2019/03/24/ConcurrentHashMap/" itemprop="url">
+                  ConcurrentHashMap
                 </a>
               
             
@@ -331,7 +331,7 @@
                 
               
 
-              <time title="创建时间：2019-03-17 21:03:00 / 修改时间：22:11:33" itemprop="dateCreated datePublished" datetime="2019-03-17T21:03:00+08:00">2019-03-17</time>
+              <time title="创建时间：2019-03-24 19:19:00 / 修改时间：21:41:39" itemprop="dateCreated datePublished" datetime="2019-03-24T19:19:00+08:00">2019-03-24</time>
             
 
             
@@ -349,333 +349,7 @@
 
           
           
-             <span id="/2019/03/17/MySQL脏页/" class="leancloud_visitors" data-flag-title="MySQL脏页">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="什么是脏页"><a href="#什么是脏页" class="headerlink" title="什么是脏页"></a>什么是脏页</h3><p>脏页就是已经发生修改的数据页。InnoDB内存池中的后台线程会负责将脏页刷新到磁盘中。</p>
-<p>InnoDB读取数据时，会将数据读取到缓存中，数据发现修改时，会先把缓存中的数据修改掉，一旦修改过的数据页就称为脏页。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/17/MySQL脏页/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/MySQL主从备份/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="prayletter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="prayletter的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/17/MySQL主从备份/" itemprop="url">
-                  MySQL主从备份
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-17 17:52:00 / 修改时间：18:17:02" itemprop="dateCreated datePublished" datetime="2019-03-17T17:52:00+08:00">2019-03-17</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/03/17/MySQL主从备份/" class="leancloud_visitors" data-flag-title="MySQL主从备份">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="机制"><a href="#机制" class="headerlink" title="机制"></a>机制</h3><p>无论是insert、update、delete，还是创建函数、存储过程，这些操作都发生在master上。当master发生操作时，slave能够获得这些操作，并同步。</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><blockquote>
-<p>在master上，主从同步事件会写入到binary-log文件中。<br>slave节点读取主从同步事件，根据读取到的事件，在slave库中进行相应更改。</p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/17/MySQL主从备份/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/对微服务的理解/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="prayletter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="prayletter的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/14/对微服务的理解/" itemprop="url">
-                  对微服务的理解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-14 21:39:00" itemprop="dateCreated datePublished" datetime="2019-03-14T21:39:00+08:00">2019-03-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-17 12:17:06" itemprop="dateModified" datetime="2019-03-17T12:17:06+08:00">2019-03-17</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/03/14/对微服务的理解/" class="leancloud_visitors" data-flag-title="对微服务的理解">
+             <span id="/2019/03/24/ConcurrentHashMap/" class="leancloud_visitors" data-flag-title="ConcurrentHashMap">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -708,11 +382,12 @@
       
         
           
-            <h3 id="缺点与挑战"><a href="#缺点与挑战" class="headerlink" title="缺点与挑战"></a>缺点与挑战</h3><ul>
-<li>微服务的分布式带来的复杂性。需要机遇RPC、消息来实现服务间的调用与通信，服务调用链的跟踪与质量问题。</li>
-<li>业务逻辑的拆分</li>
-<li>分布式事务</li>
-<li>测试复杂</li>
+            <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>segment继承ReentrantLock</li>
+<li>remove方法，链表中待删除元素之后的元素原样保留在新链表中，待删除元素之前的元素翻转了顺序加入到新链表中</li>
+<li>remove方法未改变原始链表，所以不影响读操作</li>
+<li>segment中表示元素个数的count、hashentry中value字段都被标注为<code>volatile</code>，保证了内存可见性。</li>
+<li>size方法，先尝试不加锁，计算两次，若两次计算都失败，即modCount在计算前后的值不相同，则进行加锁累加各segment中count大小。</li>
 </ul>
 
           
@@ -767,7 +442,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/BeanFactory与FactoryBean/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/MySQL中sort原理/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -786,8 +461,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/14/BeanFactory与FactoryBean/" itemprop="url">
-                  BeanFactory与FactoryBean
+                <a class="post-title-link" href="/2019/03/24/MySQL中sort原理/" itemprop="url">
+                  MySQL中sort原理
                 </a>
               
             
@@ -813,7 +488,7 @@
                 
               
 
-              <time title="创建时间：2019-03-14 20:44:00 / 修改时间：21:26:28" itemprop="dateCreated datePublished" datetime="2019-03-14T20:44:00+08:00">2019-03-14</time>
+              <time title="创建时间：2019-03-24 19:19:00 / 修改时间：19:36:26" itemprop="dateCreated datePublished" datetime="2019-03-24T19:19:00+08:00">2019-03-24</time>
             
 
             
@@ -831,7 +506,7 @@
 
           
           
-             <span id="/2019/03/14/BeanFactory与FactoryBean/" class="leancloud_visitors" data-flag-title="BeanFactory与FactoryBean">
+             <span id="/2019/03/24/MySQL中sort原理/" class="leancloud_visitors" data-flag-title="MySQL中sort原理">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -863,10 +538,17 @@
 
       
         
-          <h3 id="BeanFactory"><a href="#BeanFactory" class="headerlink" title="BeanFactory"></a>BeanFactory</h3><p><code>BeanFactory</code>是一个接口，提供了IOC容器最基本的形式，负责生产与管理Bean，它为其他具体的IOC容器提供了最基本的规范。</p>
+          <p>MySQL采用三种排序算法，常规排序、优化排序与优化队列排序。</p>
+<h3 id="常规排序"><a href="#常规排序" class="headerlink" title="常规排序"></a>常规排序</h3><ol>
+<li>获取满足where条件的记录。</li>
+<li>对于每条记录，取出主键与排序键，放入sort buffer中。</li>
+<li>若sort buffer中可以存放所有满足条件的记录，则采用快速排序进行排序。若sort buffer已满，则排序固化排序结果到临时文件。</li>
+<li>若产生了临时文件，则采用归并排序算法。</li>
+<li>扫描排好序的(id, col)对，根据id去捞需要返回的列数据(col1, col2, col3…)。</li>
+</ol>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/14/BeanFactory与FactoryBean/#more" rel="contents">
+            <a class="btn" href="/2019/03/24/MySQL中sort原理/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -922,7 +604,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/JAVA参数传递/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/Oracle与MySQL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -941,8 +623,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/13/JAVA参数传递/" itemprop="url">
-                  JAVA参数传递
+                <a class="post-title-link" href="/2019/03/24/Oracle与MySQL/" itemprop="url">
+                  Oracle与MySQL
                 </a>
               
             
@@ -968,7 +650,7 @@
                 
               
 
-              <time title="创建时间：2019-03-13 21:14:00 / 修改时间：22:41:50" itemprop="dateCreated datePublished" datetime="2019-03-13T21:14:00+08:00">2019-03-13</time>
+              <time title="创建时间：2019-03-24 18:23:00 / 修改时间：18:39:24" itemprop="dateCreated datePublished" datetime="2019-03-24T18:23:00+08:00">2019-03-24</time>
             
 
             
@@ -986,7 +668,7 @@
 
           
           
-             <span id="/2019/03/13/JAVA参数传递/" class="leancloud_visitors" data-flag-title="JAVA参数传递">
+             <span id="/2019/03/24/Oracle与MySQL/" class="leancloud_visitors" data-flag-title="Oracle与MySQL">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1018,163 +700,15 @@
 
       
         
-          
-            <p>值传递</p>
-<p>参数类型是基本类型，传递的是基本类型的字面量的拷贝。<br>参数类型是引用类型，传递的是所引用对象在堆中地址值的拷贝。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/Fail-Fast/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="prayletter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="prayletter的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/13/Fail-Fast/" itemprop="url">
-                  Fail-Fast
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-13 18:43:00 / 修改时间：21:13:26" itemprop="dateCreated datePublished" datetime="2019-03-13T18:43:00+08:00">2019-03-13</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/03/13/Fail-Fast/" class="leancloud_visitors" data-flag-title="Fail-Fast">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="含义"><a href="#含义" class="headerlink" title="含义"></a>含义</h3><p>快速失败，是JAVA中一种错误检测机制。当多个线程对集合进行结构上的改变操作的时候，有可能会产生fail-fast机制。</p>
-<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>对迭代器进行迭代时，某个线程对该Collection在结构上进行了修改，这是迭代器就会抛出<code>ConcurrentModificationException</code>，从而产生Fail-Fast。</p>
+          <h3 id="oracle与MySQL区别"><a href="#oracle与MySQL区别" class="headerlink" title="oracle与MySQL区别"></a>oracle与MySQL区别</h3><ul>
+<li>锁级别。oracle使用行级锁，mysql以表级锁为主，innoDB引擎虽然支持行级锁，但是依赖索引，如果表中没有索引，或者查询语句没有使用索引，则仍然使用表级锁。</li>
+<li>oracle中insert、update可操作的字符串最大长度为4000，若需要操作大于4000长度的字符串，可使用CLOB类型。</li>
+<li>分页方式。mysql可直接使用limit关键字进行处理，oracle分页处理的SQL则较为复杂。</li>
+<li>默认提交方式。oracle默认不自动提交事务，需用户手动提交。MySQL默认开启自动提交。</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/13/Fail-Fast/#more" rel="contents">
+            <a class="btn" href="/2019/03/24/Oracle与MySQL/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1230,7 +764,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/主线程等待子线程/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/分布式数据一致性问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -1249,8 +783,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/11/主线程等待子线程/" itemprop="url">
-                  主线程等待子线程
+                <a class="post-title-link" href="/2019/03/24/分布式数据一致性问题/" itemprop="url">
+                  分布式数据一致性问题
                 </a>
               
             
@@ -1276,24 +810,12 @@
                 
               
 
-              <time title="创建时间：2019-03-11 22:10:00" itemprop="dateCreated datePublished" datetime="2019-03-11T22:10:00+08:00">2019-03-11</time>
+              <time title="创建时间：2019-03-24 17:19:00 / 修改时间：17:19:32" itemprop="dateCreated datePublished" datetime="2019-03-24T17:19:00+08:00">2019-03-24</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-14 21:28:00" itemprop="dateModified" datetime="2019-03-14T21:28:00+08:00">2019-03-14</time>
               
             
           </span>
@@ -1306,7 +828,7 @@
 
           
           
-             <span id="/2019/03/11/主线程等待子线程/" class="leancloud_visitors" data-flag-title="主线程等待子线程">
+             <span id="/2019/03/24/分布式数据一致性问题/" class="leancloud_visitors" data-flag-title="分布式数据一致性问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1338,11 +860,318 @@
 
       
         
-          <h3 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h3><p>一般情况下，定义一个子线程SubThread，如下:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SubThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"sub thread start run"</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            Thread.sleep(<span class="number">5000</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"sub thread stop run"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/24/大并发、大流量超过预估怎么办/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="prayletter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="prayletter的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/24/大并发、大流量超过预估怎么办/" itemprop="url">
+                  大并发、大流量超过预估怎么办
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-24 14:03:00 / 修改时间：17:18:48" itemprop="dateCreated datePublished" datetime="2019-03-24T14:03:00+08:00">2019-03-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/24/大并发、大流量超过预估怎么办/" class="leancloud_visitors" data-flag-title="大并发、大流量超过预估怎么办">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>扩容</li>
+<li>优化 代码层优化</li>
+<li>缓存 CDN、Redis</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/布隆过滤器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="prayletter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="prayletter的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/23/布隆过滤器/" itemprop="url">
+                  布隆过滤器
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-23 21:17:00 / 修改时间：21:50:38" itemprop="dateCreated datePublished" datetime="2019-03-23T21:17:00+08:00">2019-03-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/23/布隆过滤器/" class="leancloud_visitors" data-flag-title="布隆过滤器">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h3><p>位图 + 一系列映射函数</p>
+<blockquote>
+<p>为什么要多个函数？减少hash冲突</p>
+</blockquote>
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/03/11/主线程等待子线程/#more" rel="contents">
+            <a class="btn" href="/2019/03/23/布隆过滤器/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1398,7 +1227,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/红黑树/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/MySQL半同步复制/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -1417,8 +1246,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/11/红黑树/" itemprop="url">
-                  红黑树
+                <a class="post-title-link" href="/2019/03/23/MySQL半同步复制/" itemprop="url">
+                  MySQL半同步复制
                 </a>
               
             
@@ -1444,24 +1273,12 @@
                 
               
 
-              <time title="创建时间：2019-03-11 20:32:00" itemprop="dateCreated datePublished" datetime="2019-03-11T20:32:00+08:00">2019-03-11</time>
+              <time title="创建时间：2019-03-23 20:17:00 / 修改时间：20:25:30" itemprop="dateCreated datePublished" datetime="2019-03-23T20:17:00+08:00">2019-03-23</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-14 21:29:13" itemprop="dateModified" datetime="2019-03-14T21:29:13+08:00">2019-03-14</time>
               
             
           </span>
@@ -1474,174 +1291,7 @@
 
           
           
-             <span id="/2019/03/11/红黑树/" class="leancloud_visitors" data-flag-title="红黑树">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h3 id="什么是红黑树"><a href="#什么是红黑树" class="headerlink" title="什么是红黑树"></a>什么是红黑树</h3><p>红黑树是一种二叉查找树，红黑树在二叉查找树的基础上给节点增加了一个额外的标记，同时还有一些规则，这些规则使二叉树保证了平衡，同时红黑树的查找、插入、删除的时间复杂度为O(N)。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/11/红黑树/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/10/JAVA对象浅析/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="prayletter">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="prayletter的博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/10/JAVA对象浅析/" itemprop="url">
-                  JAVA对象浅析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-03-10 20:57:00" itemprop="dateCreated datePublished" datetime="2019-03-10T20:57:00+08:00">2019-03-10</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-14 21:38:42" itemprop="dateModified" datetime="2019-03-14T21:38:42+08:00">2019-03-14</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-             <span id="/2019/03/10/JAVA对象浅析/" class="leancloud_visitors" data-flag-title="JAVA对象浅析">
+             <span id="/2019/03/23/MySQL半同步复制/" class="leancloud_visitors" data-flag-title="MySQL半同步复制">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1674,11 +1324,12 @@
       
         
           
-            <p>JAVA内存布局是<strong>对象头</strong>、<strong>实例数据</strong>、<strong>对齐填充</strong>。</p>
-<p><strong>对象头</strong>包括两部分<strong>对象自身的运行时数据</strong>、<strong>类型指针</strong>。</p>
-<pre><code>- 对象自身运行时数据，又称为**Mark World**，包括hashCode、GC分代年龄、锁标志、线程持有的锁、偏向线程ID、偏向时间戳。这部分数据在32位虚拟机中占用`4B`，在未开启指针压缩64位虚拟机中占用`8B`。
-- 类型指针。存储指向对象类元数据的指针，虚拟机通过这个指针来判断对象是哪个类的实例。
-</code></pre>
+            <p>与异步复制相比，半同步复制会挑选slave节点中挑选一个节点进行半同步复制，在master提交一个事务时，服务器会等半同步复制的slave节点返回同步完成的ack包后，才放回用户事务提交成功，其他slave节点仍采用异步复制方式进行同步。</p>
+<p>半同步复制保证在master节点发生故障时，至少有一个slave节点与master节点数据一致。</p>
+<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><blockquote>
+<p><a href="https://www.jianshu.com/p/d877cbe9f0f0" target="_blank" rel="noopener">MySQL的异步复制和半同步复制</a></p>
+</blockquote>
+
           
         
       
@@ -1731,7 +1382,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/耦合与解耦/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/分库分表/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="prayletter">
@@ -1750,8 +1401,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/09/耦合与解耦/" itemprop="url">
-                  耦合与解耦
+                <a class="post-title-link" href="/2019/03/23/分库分表/" itemprop="url">
+                  分库分表
                 </a>
               
             
@@ -1777,7 +1428,7 @@
                 
               
 
-              <time title="创建时间：2019-03-09 19:22:00" itemprop="dateCreated datePublished" datetime="2019-03-09T19:22:00+08:00">2019-03-09</time>
+              <time title="创建时间：2019-03-23 12:28:00" itemprop="dateCreated datePublished" datetime="2019-03-23T12:28:00+08:00">2019-03-23</time>
             
 
             
@@ -1794,7 +1445,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-14 20:41:44" itemprop="dateModified" datetime="2019-03-14T20:41:44+08:00">2019-03-14</time>
+                <time title="修改时间：2019-03-24 12:13:05" itemprop="dateModified" datetime="2019-03-24T12:13:05+08:00">2019-03-24</time>
               
             
           </span>
@@ -1807,7 +1458,7 @@
 
           
           
-             <span id="/2019/03/09/耦合与解耦/" class="leancloud_visitors" data-flag-title="耦合与解耦">
+             <span id="/2019/03/23/分库分表/" class="leancloud_visitors" data-flag-title="分库分表">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -1840,8 +1491,350 @@
       
         
           
-            <h3 id="耦合"><a href="#耦合" class="headerlink" title="耦合"></a>耦合</h3><p>在软件工程中，对象的耦合度就是对象的依赖关系。对象的耦合度越高，维护成本就越高。</p>
-<h3 id="解耦"><a href="#解耦" class="headerlink" title="解耦"></a>解耦</h3><p>降低对象间的依赖关系就是解耦。对象间的交互可以通过接口、使用框架、通过框架等。</p>
+            <h3 id="为什么要分库分表"><a href="#为什么要分库分表" class="headerlink" title="为什么要分库分表"></a>为什么要分库分表</h3><ul>
+<li>业务拆分</li>
+<li>单表数据量太大，查询性能问题</li>
+<li>数据库性能瓶颈</li>
+</ul>
+<h3 id="分库分表引入的问题"><a href="#分库分表引入的问题" class="headerlink" title="分库分表引入的问题"></a>分库分表引入的问题</h3><ul>
+<li>关联查询</li>
+<li>分布式事务</li>
+</ul>
+<h3 id="拆分原则"><a href="#拆分原则" class="headerlink" title="拆分原则"></a>拆分原则</h3><ul>
+<li>垂直拆分</li>
+<li>水平拆分 <ul>
+<li>离散型水平拆分 取模</li>
+<li>非离散型水平拆分 ID区域段</li>
+</ul>
+</li>
+</ul>
+<h3 id="名词"><a href="#名词" class="headerlink" title="名词"></a>名词</h3><ul>
+<li>分片表</li>
+<li>全局表 数据字典</li>
+</ul>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ul>
+<li>拦截拦截SQL</li>
+<li>组装重写SQL</li>
+<li>拼装结果集</li>
+</ul>
+<h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><ul>
+<li>全局ID</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/23/JAVA基本类型变量初始化/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="prayletter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="prayletter的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/23/JAVA基本类型变量初始化/" itemprop="url">
+                  JAVA基本类型变量初始化
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-23 11:31:00 / 修改时间：12:27:52" itemprop="dateCreated datePublished" datetime="2019-03-23T11:31:00+08:00">2019-03-23</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/23/JAVA基本类型变量初始化/" class="leancloud_visitors" data-flag-title="JAVA基本类型变量初始化">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在类中定义的基本类型变量会进行自动初始化。</p>
+<blockquote>
+<p>boolean false<br>char null<br>byte 0<br>short 0<br>int 0<br>long 0L<br>fload 0.0f<br>double 0.0d<br>引用类型 null</p>
+</blockquote>
+<p>方法中定义的变量，未显示初始化，编译会报错。</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/18/Array与ArrayList/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="prayletter">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="prayletter的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/18/Array与ArrayList/" itemprop="url">
+                  Array与ArrayList
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-18 23:41:00 / 修改时间：23:51:22" itemprop="dateCreated datePublished" datetime="2019-03-18T23:41:00+08:00">2019-03-18</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2019/03/18/Array与ArrayList/" class="leancloud_visitors" data-flag-title="Array与ArrayList">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数：</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h3><ul>
+<li>实现。Array是一个数据结构，只暴露了<code>length</code>方法；ArrayList是JAVA中的一个集合类，有更多可以调用的方法。</li>
+<li>迭代。ArrayList与Array都可以通过<code>for</code>、<code>while</code>等循环遍历元素，但是ArrayList还提供了Iterator和ListIterator迭代器的方式进行遍历。</li>
+<li>扩容。Array大小固定，ArrayList可以动态改变。</li>
+</ul>
+<h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><ul>
+<li>O(1)获取一个元素</li>
+<li>都容许存储Null值</li>
+<li>都容许存储重复值</li>
+</ul>
 
           
         
@@ -1884,7 +1877,7 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1927,7 +1920,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1994,7 +1987,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>

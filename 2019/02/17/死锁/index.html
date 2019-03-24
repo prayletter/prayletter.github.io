@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="prayletter的博客">
 <meta property="og:description" content="死锁的四个必要条件 资源互斥。同一个系统资源在同一时间只能被一个进程使用。 占有等待。一个进程因等待资源而阻塞时，它持有的资源不释放。 不可抢占。进程已拥有的资源，在未使用完之前，不能强行剥夺。 循环等待。若干线程形成首尾相接的循环资源等待关系。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-20T11:22:51.312Z">
+<meta property="og:updated_time" content="2019-03-24T13:45:22.540Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="死锁">
 <meta name="twitter:description" content="死锁的四个必要条件 资源互斥。同一个系统资源在同一时间只能被一个进程使用。 占有等待。一个进程因等待资源而阻塞时，它持有的资源不释放。 不可抢占。进程已拥有的资源，在未使用完之前，不能强行剥夺。 循环等待。若干线程形成首尾相接的循环资源等待关系。">
@@ -348,7 +348,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-02-20 19:22:51" itemprop="dateModified" datetime="2019-02-20T19:22:51+08:00">2019-02-20</time>
+                <time title="修改时间：2019-03-24 21:45:22" itemprop="dateModified" datetime="2019-03-24T21:45:22+08:00">2019-03-24</time>
               
             
           </span>
@@ -398,6 +398,16 @@
 <li>不可抢占。进程已拥有的资源，在未使用完之前，不能强行剥夺。</li>
 <li>循环等待。若干线程形成首尾相接的循环资源等待关系。</li>
 </ol>
+<a id="more"></a>
+<h3 id="如何避免死锁"><a href="#如何避免死锁" class="headerlink" title="如何避免死锁"></a>如何避免死锁</h3><ul>
+<li>加锁顺序。</li>
+<li>加锁时限</li>
+<li>死锁检测</li>
+</ul>
+<h3 id="排查方法"><a href="#排查方法" class="headerlink" title="排查方法"></a>排查方法</h3><ul>
+<li>Jstack命令，查看进程的堆栈信息</li>
+<li>Jconsole命令，选择本地线程，检测死锁</li>
+</ul>
 
       
     </div>
@@ -513,7 +523,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">65</span>
+                    <span class="site-state-item-count">75</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -580,7 +590,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">26</span>
+                      
+                    
+                    <span class="site-state-item-count">27</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -616,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁的四个必要条件"><span class="nav-text">死锁的四个必要条件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#死锁的四个必要条件"><span class="nav-text">死锁的四个必要条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何避免死锁"><span class="nav-text">如何避免死锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#排查方法"><span class="nav-text">排查方法</span></a></li></ol></div>
             
 
           </div>
